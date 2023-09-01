@@ -1,0 +1,23 @@
+<%- include('../includes/head.ejs') %>
+
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+  <div class="container">
+    <h1 class="bg-dark text-white text-center my-4 py-4"><%= translates.title %></h1>
+    <div class="alert alert-secondary">
+      <h2><%= translates.infoBoxTitle %></h2>
+      <p><%- translates.infoBox %></p>
+      
+      <h3><%= translates.infoBox2Title %></h3>
+      <%- translates.infoBox2 %>
+      <h3><%= translates.infoBox3Title %></h3>
+      <%- translates.infoBox3 %>
+    </div>
+
+  </div>
+
+<%- include('../includes/end.ejs') %>
+

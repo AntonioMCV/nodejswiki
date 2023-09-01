@@ -1,0 +1,145 @@
+<script>
+  function postLaguage(lang) {
+    var form = document.querySelector('#langFrom');
+    form.querySelector('#inputLanguage').value = lang;
+    form.querySelector('#inputPath').value = window.location.pathname;
+    form.submit();
+  }
+</script>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-md">
+    <a class="navbar-brand" href="/<%= global.lang.current %>/">NodeJS Wiki</a
+    ><button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      onClick="getElementById('navbarSupportedContent').classList.toggle('show')"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse justify-content-between"
+      id="navbarSupportedContent"
+    >
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            ><%= global.lang.navigation.basics %></a
+          >
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li>
+              <a
+                class="dropdown-item"
+                href="/<%= global.lang.current %>/basics/web-applications"
+                ><%= global.lang.navigation.webApplications %></a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            ><%= global.lang.navigation.examples %></a
+          >
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li>
+              <a
+                class="dropdown-item"
+                href="/<%= global.lang.current %>/examples/store"
+                ><%= global.lang.navigation.store %></a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            ><%= global.lang.navigation.libraries %></a
+          >
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li>
+              <a
+                class="dropdown-item"
+                href="/<%= global.lang.current %>/libraries/express"
+                ><%= global.lang.navigation.express %></a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="/<%= global.lang.current %>/libraries/path"
+                ><%= global.lang.navigation.path %></a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="/<%= global.lang.current %>/libraries/mysql-sequelize"
+                ><%= global.lang.navigation.mysqlSequelize %></a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="/<%= global.lang.current %>/libraries/mongodb-mongoose"
+                ><%= global.lang.navigation.mongodbMongoose %></a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            ><%= global.lang.navigation.language %>: <%=
+            global.lang.current.toUpperCase() %>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <% for (let lang of global.config.application.langs) { if (lang !==
+            global.lang.current) { %>
+            <li>
+              <button
+                class="dropdown-item"
+                onclick="postLaguage('<%= lang %>')"
+              >
+                <%= lang.toUpperCase() %>
+              </button>
+            </li>
+            <% } } %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<form
+  class="product-form"
+  action="/<%= global.lang.current %>/set-language"
+  method="POST"
+  id="langFrom"
+>
+  <input id="inputLanguage" type="hidden" name="language" value="" />
+  <input id="inputPath" type="hidden" name="path" value="" />
+</form>

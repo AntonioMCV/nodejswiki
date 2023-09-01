@@ -1,0 +1,96 @@
+<div class="backdrop"></div>
+<div class="main-header">
+  <button id="side-menu-toggle">Menu</button>
+  <nav class="main-header__nav container">
+    <ul class="main-header__item-list">
+      <li class="main-header__item ms-0">
+        <a
+          class="<%= path === '/' ? 'active' : '' %>"
+          href="/<%= global.lang.current %>/examples/store"
+          ><%= global.lang.examples.store.navigation.shop %></a
+        >
+      </li>
+      <li class="main-header__item">
+        <a
+          class="<%= path === '/products' ? 'active' : '' %>"
+          href="/<%= global.lang.current %>/examples/store/products"
+          ><%= global.lang.examples.store.navigation.products %></a
+        >
+      </li>
+      <li class="main-header__item">
+        <a
+          class="<%= path === '/cart' ? 'active' : '' %>"
+          href="/<%= global.lang.current %>/examples/store/cart"
+          ><%= global.lang.examples.store.navigation.cart %></a
+        >
+      </li>
+      <li class="main-header__item">
+        <a
+          class="<%= path === '/orders' ? 'active' : '' %>"
+          href="/<%= global.lang.current %>/examples/store/orders"
+          ><%= global.lang.examples.store.navigation.orders %></a
+        >
+      </li>
+      <li class="main-header__item">
+        <a
+          class="<%= path === '/admin/add-product' ? 'active' : '' %>"
+          href="/<%= global.lang.current %>/examples/store/admin/add-product"
+          ><%= global.lang.examples.store.navigation.addProducts %></a
+        >
+      </li>
+      <li class="main-header__item">
+        <a
+          class="<%= path === '/admin/products' ? 'active' : '' %>"
+          href="/<%= global.lang.current %>/examples/store/admin/products"
+          ><%= global.lang.examples.store.navigation.adminProduct %></a
+        >
+      </li>
+    </ul>
+  </nav>
+</div>
+<nav class="mobile-nav">
+  <ul class="mobile-nav__item-list">
+    <li class="mobile-nav__item">
+      <a
+        class="<%= path === '/' ? 'active' : '' %>"
+        href="/<%= global.lang.current %>/examples/store/"
+        ><%= global.lang.examples.store.navigation.shop %></a
+      >
+    </li>
+    <li class="mobile-nav__item">
+      <a
+        class="<%= path === '/products' ? 'active' : '' %>"
+        href="/<%= global.lang.current %>/examples/store/products"
+        ><%= global.lang.examples.store.navigation.products %></a
+      >
+    </li>
+    <li class="mobile-nav__item">
+      <a
+        class="<%= path === '/cart' ? 'active' : '' %>"
+        href="/<%= global.lang.current %>/examples/store/cart"
+        ><%= global.lang.examples.store.navigation.cart %></a
+      >
+    </li>
+    <li class="mobile-nav__item">
+      <a
+        class="<%= path === '/orders' ? 'active' : '' %>"
+        href="/<%= global.lang.current %>/examples/store/orders"
+        ><%= global.lang.examples.store.navigation.orders %></a
+      >
+    </li>
+    <li class="mobile-nav__item">
+      <a
+        class="<%= path === '/admin/add-product' ? 'active' : '' %>"
+        href="/<%= global.lang.current %>/examples/store/admin/add-product"
+        ><%= global.lang.examples.store.navigation.addProducts %>
+      </a>
+    </li>
+    <li class="mobile-nav__item">
+      <a
+        class="<%= path === '/admin/products' ? 'active' : '' %>"
+        href="/<%= global.lang.current %>/examples/store/admin/products"
+        ><%= global.lang.examples.store.navigation.adminProduct %>
+      </a>
+    </li>
+  </ul>
+</nav>
