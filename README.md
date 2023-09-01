@@ -6,6 +6,10 @@ The node version to develop is 18.16.0
 
 In the project directory, you can run:
 
+### `npm install`
+
+To install all application dependencies
+
 ### `npm start`
 
 Runs the app in the development mode.\
