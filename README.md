@@ -20,7 +20,5 @@ You may also see any lint errors in the console.
 
 # browser version
 
-to view the project in the browser.\
-[Full page ndt5hx-3000.csb.app/](https://ndt5hx-3000.csb.app/).\
 to view the project with code in the browser.\
-[Code codesandbox.io/s/github/AntonioMCV/nodejswiki/](https://codesandbox.io/s/github/AntonioMCV/nodejswiki/)
+[Project with Code](https://codesandbox.io/s/github/AntonioMCV/nodejswiki/)
