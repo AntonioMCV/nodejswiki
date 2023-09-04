@@ -2,8 +2,10 @@ const basicWebApplicationsInfoBoxPart2 = `
 </li>
     
 <li><strong>Run Your Application:</strong> From the terminal, run your application using Node.js.
-  <pre>
-    <code>node app.js</code>
+  <pre class="bg-body-secondary rounded m-5 border border-2 border-secondary">
+    <code>
+      node app.js
+    </code>
   </pre>
 </li>
 

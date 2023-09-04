@@ -61,7 +61,7 @@ User.findOne().then(user => {
     user.save()
   }
 
-  // Check if the environment variable is set
+  // Check if the environment variable is set to production environment
   const desiredPort = process.env.PORT || 3000
 
   // Check if the port is available with findAvailablePort method

@@ -5,6 +5,8 @@ var translations = {
   navigation: {
     basics: 'Básicos',
     webApplications: 'Aplicaciones Web',
+    globalVariables: 'Variables Globales',
+    modules: 'Módulos',
     examples: 'Ejemplos',
     store: 'Tieda - mongoose',
     libraries: 'Librerias',
@@ -28,6 +30,27 @@ var translations = {
       infoBoxTitle: 'Levantar una Aplicación Web con <a href="/' + global.config.site.language + '/libraries/express">Express</a> y EJS (Sistema de plantillas HTML):',
       infoBoxPart1: basicWebApplicationsInfoBoxPart1,
       infoBoxPart2: basicWebApplicationsInfoBoxPart2
+    },
+    globalVariables: {
+      title: 'Variables Globales',
+      infoBoxTitle: 'Diferentes variables en diferentes entornos de ejecución',
+      infoBox: 'En node JS no tenemos la variable global <b>window</b> definida ya que NodeJS es un enterno de ejecución totalmente diferente al navegador y por lo tanto el objeto global de window no existe, no tenemos una ventana donde estemos mostrando los datos. Si que tenemos un objeto global que si que es comun para todos los entornos y este es <b>globalthis</b>.<ul><li>Si utilizamos globalthis en el navegador este apunta a la variable <b>window</b>.</li><li>Si la utilizamos en NodeJS apunta a la variable <b>global</b></li></ul>Como apunte es bueno saber que cualquier metodo predefinido en JavaScript viene definido por estas variables globales como console.log, math, fetch, promise ect.'
+    },
+    modules: {
+      title: 'Módulos',
+      infoBox1Title: 'Patrones de diseño de módulo',
+      infoBox1SubTitle: 'CommonJS',
+      infoBox1Part1: 'Es la forma antigua y por defecto de NodeJS, si ponemos este código en un archivo <code>suma.js</code>.',
+      infoBox1Part2: 'Para importarlo en otro archivo lo haremos con <b>require</b>',
+      infoBox2SubTitle: 'ES Modules',
+      infoBox2Part1: 'Es la forma más moderna y recomendada de NodeJS, si ponemos este código en un archivo <code>suma.mjs</code>.',
+      infoBox2Part2: 'Para importarlo en otro archivo lo haremos con <b>import</b>',
+      infoBox3Title: 'Módulos nativos',
+      infoBox3: "Los módulos nativos son las librerías que se incluyen por defecto en Node.js, desde la versión 16 de NodeJS es recomendable importarlos con el prefijo node: por ejemplo <code>require os = require('node:os')</code>",
+      infoBox4Title: 'Módulo File System',
+      infoBox4: 'Es una librería de Node.js que permite interactuar con el sistema de archivos.',
+      infoBox5Title: 'Módulo Path',
+      infoBox5: 'Nos da informacion sobre el path de los archivos que tenemos, vamos a poder construir nuevas rutas de archivos, unir rutas, saber la extension de un archivo ect.'
     }
   },
   libraries: {

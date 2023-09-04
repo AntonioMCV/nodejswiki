@@ -6,6 +6,22 @@ exports.getBasicWebApplications = (req, res, next) => {
   })
 }
 
+exports.getGlobalVariables = (req, res, next) => {
+  res.render('basics/global-variables', {
+    pageTitle: 'Global Variables',
+    path: '/basics/global-variables',
+    translates: global.lang.basics.globalVariables
+  })
+}
+
+exports.getModules = (req, res, next) => {
+  res.render('basics/modules', {
+    pageTitle: 'Modules',
+    path: '/basics/modules',
+    translates: global.lang.basics.modules
+  })
+}
+
 exports.getLibrariesExpress = (req, res, next) => {
   res.render('libraries/express', {
     pageTitle: 'Library Express',

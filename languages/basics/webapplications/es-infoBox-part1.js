@@ -2,26 +2,31 @@ const basicWebApplicationsInfoBoxPart1 = `<ol>
     <li><strong>Configura tu Entorno:</strong> Asegúrate de tener Node.js instalado en tu sistema. Puedes descargarlo desde <a href="https://nodejs.org/" target="_blank">nodejs.org</a>.</li>
     
     <li><strong>Crea un Directorio para tu Proyecto:</strong> Abre una terminal y crea un nuevo directorio para tu aplicación web. Luego, navega al directorio recién creado.
-      <pre>
-        <code>mkdir mi-aplicacion-express-ejs
-cd mi-aplicacion-express-ejs</code>
+      <pre class="bg-body-secondary rounded m-5 border border-2 border-secondary">
+        <code>
+          mkdir mi-aplicacion-express-ejs
+          cd mi-aplicacion-express-ejs</code>
       </pre>
     </li>
     
     <li><strong>Inicializa tu Proyecto:</strong> Ejecuta el siguiente comando para crear un archivo <code>package.json</code> que gestionará las dependencias de tu proyecto.
-      <pre>
-        <code>npm init -y</code>
+      <pre class="bg-body-secondary rounded m-5 border border-2 border-secondary">
+        <code>
+          npm init -y
+        </code>
       </pre>
     </li>
     
     <li><strong>Instala Express y EJS:</strong> Utiliza el siguiente comando para instalar Express y EJS como dependencias de tu proyecto.
-      <pre>
-        <code>npm install express ejs --save</code>
+      <pre class="bg-body-secondary rounded m-5 border border-2 border-secondary">
+        <code>
+          npm install express ejs --save
+        </code>
       </pre>
     </li>
     
     <li><strong>Crea tu Aplicación Express:</strong> Crea un archivo JavaScript, por ejemplo, <code>app.js</code>, y comienza a construir tu aplicación. Asegúrate de configurar EJS como el motor de plantillas. Por problemas de compatibilidad deberas cambiar la parte del ejemplo "<b>#{port}</b>", donde esta el simbolo <b>"#" por "$"</b>.
-      <pre>
+      <pre class="bg-body-secondary rounded m-5 border border-2 border-secondary">
         <code>
           const express = require('express');
           const app = express();

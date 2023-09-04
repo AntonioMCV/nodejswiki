@@ -1,0 +1,128 @@
+<%- include('../includes/head.ejs') %>
+
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+  <div class="container">
+    <h1 class="bg-dark text-white text-center my-4 py-4"><%= translates.title %></h1>
+    <div class="alert alert-secondary">
+      <h2><%= translates.infoBox1Title %></h2><br/>
+      <ul>
+        <li>
+          <h3><%= translates.infoBox1SubTitle %></h3>
+          <p>
+            <%- translates.infoBox1Part1 %>
+          </p>
+          <pre class="bg-body-secondary rounded m-5 border border-2 border-secondary">
+            <code>
+              function sum(a, b) {
+                return a + b;
+              }
+    
+              mopdule.export = { sum }
+            </code>
+          </pre>
+          <p><%- translates.infoBox1Part2 %></p>
+          <pre class="bg-body-secondary rounded m-5 border border-2 border-secondary">
+            <code>
+              const { sum } = require('sum');
+              console.log(sum(1, 2));
+            </code>
+          </pre>
+        </li>
+        <li>
+          <h3><%= translates.infoBox2SubTitle %></h3>
+          <p><%- translates.infoBox2Part1 %></p>
+          <pre class="bg-body-secondary rounded m-5 border border-2 border-secondary">
+            <code>
+              export function sum(a, b) {
+                return a + b;
+              }
+              export function sub(a, b) {
+                return a - b;
+              }
+              export function mult(a, b) {
+                return a * b;
+              }
+            </code>
+          </pre>
+          <p><%- translates.infoBox2Part2 %></p>
+          <pre class="bg-body-secondary rounded m-5 border border-2 border-secondary">
+            <code>
+              import { sum, sub, mult } from './sum.mjs'
+              console.log(sum(1, 2));
+              console.log(sub(1, 2));
+              console.log(mult(1, 2));
+            </code>
+          </pre>
+        </li>
+      </ul>
+      <hr/><br/>
+
+      <h2><%= translates.infoBox3Title %></h2>
+      <p><%- translates.infoBox3 %></p>
+      <hr/><br/>
+      <h2><%= translates.infoBox4Title %></h2>
+      <p><%= translates.infoBox4 %></p>
+      <pre class="bg-body-secondary rounded m-5 border border-2 border-secondary">
+        <code>
+          // This only in the native modules without native promises support.
+          
+          // const fs = require('node:fs');
+          // const { promisify } = require('node:util');
+          // const readFilePromise = promisify(fs.readFile);
+
+          // But is not neccesary because fs has promise support
+
+          const fs = require('node:fs/promise');
+          const stats = fs.statSync(./sum.js)
+          console.log(
+            stats.isFile(), // si es un fichero
+            stats.isDirectory(), // si es un directorio
+            stats.isSymbolicLink(), // si es un enlace simbolico
+            stats.size // tamaño en bytes
+          )
+
+          // lectura del archivo
+          const text = fs.readFile('./sum.js', 'utf-8').then((data) => {
+            console.log(data)
+          })
+          console.log('do somethings when readFile() is reading the file')
+
+          const text = fs.readFileSync(''./sum.js', 'utf-8')
+          console.log(text)
+          console.log('do somethings when the secong readFile() is finnished')
+        </code>
+      </pre>
+      <hr/><br/>
+      <h2><%= translates.infoBox5Title %></h2>
+      <p><%= translates.infoBox5 %></p>
+      <pre class="bg-body-secondary rounded m-5 border border-2 border-secondary">
+        <code>
+          const path = require('node:path');
+
+          //type of separate bar folder SO
+          console.log(path.sep) // \ or /
+
+          //merge roots with path.join
+          const filePath = path.join('./content', 'subfolder', 'test.txt')
+          console.log(filePath) // content\subfolder\test.txt or content/subfolder/test.txt
+
+          const base = path.basename('tmp/secret-files/password.txt')
+          console.log(base) // password.txt
+
+          const filename = path.basename('tmp/secret-files/password.txt', '.txt')
+          console.log(filename) // password
+
+          const extension = path.extname('my.super.image.jpg')
+          console.log(extension) // .jpg
+        </code>
+      </pre>
+    </div>
+
+  </div>
+
+<%- include('../includes/end.ejs') %>
+

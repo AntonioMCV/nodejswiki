@@ -5,6 +5,8 @@ var translations = {
   navigation: {
     basics: 'Basics',
     webApplications: 'Web Applications',
+    globalVariables: 'Global Variables',
+    modules: 'Modules',
     examples: 'Examples',
     store: 'Store - Mongoose',
     libraries: 'Libraries',
@@ -29,6 +31,27 @@ var translations = {
       infoBoxTitle: 'Build a Web Application with <a href="/' + global.config.site.language + '/libraries/express">Express</a> and EJS (HTML Template System):',
       infoBoxPart1: basicWebApplicationsInfoBoxPart1,
       infoBoxPart2: basicWebApplicationsInfoBoxPart2
+    },
+    globalVariables: {
+      title: 'Global Variables',
+      infoBoxTitle: 'Different Variables in Diferent Execution Environment',
+      infoBox: 'In node JS we do not have the global <b>window</b> variable defined since NodeJS is a completely different execution environment from the browser and therefore the global window object does not exist, we do not have a window where we are displaying the data. Yes, we have a global object that is common to all environments and this is <b>globalthis</b>.<ul><li>If we use globalthis in the browser it points to the <b>window</b> variable.</li><li>If we use it in NodeJS it points to the <b>global</b> variable</li></ul>As a note, it is good to know that any predefined method in JavaScript is defined by these global variables such as console.log, math, fetch, promise, etc.'
+    },
+    modules: {
+      title: 'Modules',
+      infoBox1Title: 'Module Design Patterns',
+      infoBox1SubTitle: 'CommonJS',
+      infoBox1Part1: 'It is the old and default way of NodeJS, if we put this code in a file <code>suma.js</code>.',
+      infoBox1Part2: 'To import it into another file we will do it with <b>require</b>',
+      infoBox2SubTitle: 'ES Modules',
+      infoBox2Part1: 'It is the most modern and recommended form of NodeJS, if we put this code in a file <code>suma.mjs</code>.',
+      infoBox2Part2: 'To import it into another file we will do it with <b>import</b>',
+      infoBox3Title: 'Native modules',
+      infoBox3: "Native modules are the libraries that are included by default in Node.js, since version 16 of NodeJS it is advisable to import them with the node prefix: for example <code>require os = require('node:os')</code>",
+      infoBox4Title: 'File System Module',
+      infoBox4Part1: 'It is a Node.js library that allows you to interact with the file system.',
+      infoBox5Title: 'Path Module',
+      infoBox5: 'It gives us information about the path of the files we have, we will be able to build new file paths, join paths, know the extension of a file, etc.'
     }
   },
   libraries: {
