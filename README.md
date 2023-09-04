@@ -17,3 +17,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+# browser version
+
+to view the project in the browser
+[SandBox full page ndt5hx-3000.csb.app/](https://ndt5hx-3000.csb.app/)
+[SandBox with code codesandbox.io/s/github/AntonioMCV/nodejswiki/](https://codesandbox.io/s/github/AntonioMCV/nodejswiki/)
