@@ -4,6 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
+const { findAvailablePort } = require('./util/free-port')
 const errorCrontroller = require('./controllers/error')
 const User = require('./models/user')
 
@@ -59,7 +60,16 @@ User.findOne().then(user => {
     })
     user.save()
   }
-  app.listen(3000)
+
+  // Check if the environment variable is set
+  const desiredPort = process.env.PORT || 3000
+
+  // Check if the port is available with findAvailablePort method
+  findAvailablePort(desiredPort).then(port => {
+    app.listen(port, () => {
+      console.log(`server listening on port http://localhost:${port}`)
+    })
+  })
 })
   .catch(err => {
     console.log(err)
