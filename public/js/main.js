@@ -8,7 +8,7 @@ function backdropClickHandler () {
 }
 
 function menuToggleClickHandler () {
-  backdrop.style.display = 'block'
+  backdrop.style.display = 'flex'
   sideDrawer.classList.add('open')
 }
 

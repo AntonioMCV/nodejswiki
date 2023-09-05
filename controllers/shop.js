@@ -4,7 +4,7 @@ const Order = require('../models/order')
 exports.getProducts = (req, res, next) => {
   Product.find()
     .then(products => {
-      console.log(products)
+      console.log('isLoggeIn: ', req.session.isLoggedIn)
       res.render('shop/product-list', {
         prods: products,
         pageTitle: 'All Products',
@@ -20,8 +20,6 @@ exports.getProduct = (req, res, next) => {
   const prodId = req.params.productId
   Product.findById(prodId)
     .then(product => {
-      console.log('------------product-------------')
-      console.log(product)
       res.render('shop/product-detail', {
         product: product,
         pageTitle: product.title,
@@ -95,7 +93,7 @@ exports.postOrder = (req, res, next) => {
       })
       const order = new Order({
         user: {
-          name: req.user.name,
+          email: req.user.email,
           userId: req.user
         },
         products: products

@@ -56,7 +56,7 @@ exports.getLibrariesMongodbMongoose = (req, res, next) => {
 
 exports.getHome = (req, res, next) => {
   return res.render('home', {
-    pageTitle: 'NodeJS Wiki Home Page',
+    pageTitle: 'Home Page',
     path: '/',
     translates: global.lang.home
   })
