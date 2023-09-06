@@ -7,6 +7,8 @@ const nodemailer = require('nodemailer')
 // Package to send emails with SendGrid
 const sendgridTansport = require('nodemailer-sendgrid-transport')
 
+const { validationResult } = require('express-validator')
+
 const User = require('../models/user')
 
 const transporter = nodemailer.createTransport(sendgridTansport({
@@ -30,7 +32,13 @@ exports.getSignup = (req, res, next) => {
   res.render('shop/auth/signup', {
     pageTitle: 'Signup',
     path: '/signup',
-    errorMessage: req.flash('error')
+    errorMessage: req.flash('error'),
+    oldInput: {
+      email: '',
+      password: '',
+      confirmPassword: ''
+    },
+    validationErrors: []
   })
 }
 
@@ -69,35 +77,42 @@ exports.postLogin = (req, res, next) => {
 exports.postSignup = (req, res, next) => {
   const email = req.body.email
   const password = req.body.password
-  const confirmPassword = req.body.confirmPassword
-  User.findOne({ email: email})
-    .then((userDoc) => {
-      if (userDoc) {
-        req.flash('error', 'E-Mail exits already, please pick a diferent one.')
-        return res.redirect('/' + global.lang.current + '/examples/store/auth/signup')
-      }
-      return bcrypt.hash(password, 12)
-        .then((hashedPassword) => {
-          const user = new User({
-            email: email,
-            password: hashedPassword,
-            cart: {items: []}
-          })
-          return user.save()
-        })
-        .then((result) => {
-          res.redirect('/' + global.lang.current + '/examples/store/auth/login')
-          // TODO fix 'UNABLE_TO_GET_ISSUER_CERT_LOCALLY' error to send email
-          return transporter.sendMail({
-            to: email,
-            from: 'shop@nodejswiki.com',
-            subject: 'Welcome to Shop Node.js Wiki',
-            html: '<h1>Welcome to Shop Node.js Wiki!</h1>'
-          })
-        })
-        .catch((err) => {
-          console.error(err)
-        })
+
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    console.log(errors.array())
+    return res.status(442).render('shop/auth/signup', {
+      pageTitle: 'Signup',
+      path: '/signup',
+      errorMessage: errors.array()[0].msg,
+      oldInput: {
+        email: email,
+        password: password,
+        confirmPassword: req.body.confirmPassword
+      },
+      validationErrors: errors.array()
+    })
+  }
+
+  bcrypt
+    .hash(password, 12)
+    .then((hashedPassword) => {
+      const user = new User({
+        email: email,
+        password: hashedPassword,
+        cart: {items: []}
+      })
+      return user.save()
+    })
+    .then((result) => {
+      res.redirect('/' + global.lang.current + '/examples/store/auth/login')
+      // TODO fix 'UNABLE_TO_GET_ISSUER_CERT_LOCALLY' error to send email
+      return transporter.sendMail({
+        to: email,
+        from: 'shop@nodejswiki.com',
+        subject: 'Welcome to Shop Node.js Wiki',
+        html: '<h1>Welcome to Shop Node.js Wiki!</h1>'
+      })
     })
     .catch((err) => {
       console.error(err)
