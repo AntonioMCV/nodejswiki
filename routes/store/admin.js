@@ -1,4 +1,5 @@
 const express = require('express')
+const { body } = require('express-validator')
 
 const addminController = require('../../controllers/admin')
 const isAuth = require('../../middleware/is-auth')
@@ -12,11 +13,45 @@ router.get('/add-product', isAuth, addminController.getAddProduct)
 router.get('/products', isAuth, addminController.getProducts)
 
 // /admin/add-product => POST
-router.post('/add-product', isAuth, addminController.postAddProduct)
+router.post(
+  '/add-product',
+  [
+    body('title')
+      .isString()
+      .isLength({ min: 3 })
+      .trim(),
+    body('imageUrl')
+      .isURL(),
+    body('price')
+      .isFloat(),
+    body('description')
+      .isLength({ min: 5, max: 400 })
+      .trim()
+  ],
+  isAuth,
+  addminController.postAddProduct
+)
 
 router.get('/edit-product/:productId', isAuth, addminController.getEditProduct)
 
-router.post('/edit-product', isAuth, addminController.postEditProduct)
+router.post(
+  '/edit-product',
+  [
+    body('title')
+      .isString()
+      .isLength({ min: 3 })
+      .trim(),
+    body('imageUrl')
+      .isURL(),
+    body('price')
+      .isFloat(),
+    body('description')
+      .isLength({ min: 5, max: 400 })
+      .trim()
+  ],
+  isAuth,
+  addminController.postEditProduct
+)
 
 router.post('/delete-product', isAuth, addminController.postDeleteProduct)
 
