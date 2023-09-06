@@ -95,6 +95,7 @@ mongoose
   // Check if the port is available with findAvailablePort method
   findAvailablePort(desiredPort).then(port => {
     app.listen(port, () => {
+      global.port = port
       console.log(`server listening on port http://localhost:${port}`)
     })
   })
