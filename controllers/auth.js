@@ -1,6 +1,20 @@
-const User = require('../models/user')
 // Package to encrypt passwords
 const bcrypt = require('bcryptjs')
+// Package to send emails
+const nodemailer = require('nodemailer')
+// Package to send emails with SendGrid
+const sendgridTansport = require('nodemailer-sendgrid-transport')
+
+const User = require('../models/user')
+
+const transporter = nodemailer.createTransport(sendgridTansport({
+  auth: {
+    api_key: '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'
+  },
+  tls: {
+    rejectUnauthorized: false
+  }
+}))
 
 exports.getLogin = (req, res, next) => {
   res.render('shop/auth/login', {
@@ -71,6 +85,16 @@ exports.postSignup = (req, res, next) => {
         })
         .then((result) => {
           res.redirect('/' + global.lang.current + '/examples/store/auth/login')
+          // TODO fix 'UNABLE_TO_GET_ISSUER_CERT_LOCALLY' error to send email
+          return transporter.sendMail({
+            to: email,
+            from: 'shop@nodejswiki.com',
+            subject: 'Welcome to Shop Node.js Wiki',
+            html: '<h1>Welcome to Shop Node.js Wiki!</h1>'
+          })
+        })
+        .catch((err) => {
+          console.error(err)
         })
     })
     .catch((err) => {
