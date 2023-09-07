@@ -55,23 +55,26 @@ app.use(csrfProtection)
 app.use(flash())
 
 app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.session.isLoggedIn
+  res.locals.csrfToken = req.csrfToken()
+  next()
+})
+
+app.use((req, res, next) => {
   if (!req.session.user) {
     return next()
   }
   User.findById(req.session.user._id)
     .then(user => {
+      if (!user) {
+        return next()
+      }
       req.user = user
       next()
     })
     .catch(err => {
-      console.log(err)
+      next(new Error(err))
     })
-})
-
-app.use((req, res, next) => {
-  res.locals.isAuthenticated = req.session.isLoggedIn
-  res.locals.csrfToken = req.csrfToken()
-  next()
 })
 
 app.use('/:lang(' + languages + ')/examples/store/admin', adminRoutes)
@@ -84,7 +87,17 @@ app.use('/examples/store/auth', authRoutes)
 app.use('/examples/store', shopRoutes)
 app.use('/', homeRoutes)
 
+app.use('/:lang(' + languages + ')/500', errorCrontroller.get500)
+app.use('/500', errorCrontroller.get500)
 app.use(errorCrontroller.get404)
+
+app.use((error, req, res, next) => {
+  res.status(500).render('500', {
+    pageTitle: 'Error!',
+    path: '/500',
+    isAuthenticated: req.session.isLoggedIn
+  })
+})
 
 mongoose
 .connect(MONGODB_URI)
