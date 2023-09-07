@@ -11,10 +11,12 @@
         <% if(errorMessage.length) { %>
             <div class="alert alert-danger"><%= errorMessage %></div>
         <% } %>
+        <!-- To handle image in forms use enctype="multipart/form-data" and the package multer -->
         <form
             class="product-form"
             action="/<%= global.lang.current %>/examples/store/admin/<% if (editing || hasError) {%>edit-product<% } else { %>add-product<% } %>"
             method="POST"
+            enctype="multipart/form-data"
         >
             <div class="form-control">
                 <label for="title">Title</label>
@@ -26,7 +28,7 @@
                     value="<% if (editing || hasError) { %><%= product.title %><% } %>"
                 >
             </div>
-            <div class="form-control">
+<!--             <div class="form-control">
                 <label for="imageUrl">image URL</label>
                 <input
                     class="<%= validationErrors.find(e => e.path === 'imageUrl') ? 'invalid' : '' %>"
@@ -34,6 +36,14 @@
                     name="imageUrl"
                     id="imageUrl"
                     value="<% if (editing || hasError) { %><%= product.imageUrl %><% } %>"
+                >
+            </div> -->
+            <div class="form-control">
+                <label for="image">image</label>
+                <input
+                    type="file"
+                    name="image"
+                    id="image"
                 >
             </div>
             <div class="form-control">

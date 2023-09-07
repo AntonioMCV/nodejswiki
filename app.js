@@ -1,14 +1,15 @@
-const path = require('node:path')
+// Native Packages
+const path = require('node:path') // To use utilities for work with file and directory paths in file systems
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
-const session = require('express-session')
-const MongoDBStore = require('connect-mongodb-session')(session)
-// CSURF is a package generator tokens to protect against CSRF attacks
-const csrf = require('csurf')
-// Flash is a package to write in session and remove it once we have read it
-const flash = require('connect-flash')
+// Third party packages
+const express = require('express')                                // To simplifies the proccess involved in handling HTTP requests and responses, routing, and middleware management.
+const bodyParser = require('body-parser')                         // To convert all bodys URL to string with body-parser package
+const mongoose = require('mongoose')                              // To connect to our MongoDB database and simplify the interaction
+const session = require('express-session')                        // To store and retrieve data in our session
+const MongoDBStore = require('connect-mongodb-session')(session)  // To store and retrieve data in our session from MongoDB database
+const csrf = require('csurf')                                     // To generate tokens to protect against CSRF attacks
+const flash = require('connect-flash')                            // To write in session and remove it once we have read it
+const multer = require('multer')                                  // To analize part incomming request for our files updates from forms
 
 const { findAvailablePort } = require('./util/free-port')
 const errorCrontroller = require('./controllers/error')
@@ -25,6 +26,7 @@ const store = new MongoDBStore({
 })
 const csrfProtection = csrf()
 
+// Create new global variables to transalations
 global.config = require('./config')
 global.i18n = require('./system/helpers/i18n')
 
@@ -32,6 +34,28 @@ global.i18n.setLanguage()
 
 const languages = global.config.application.languages
 
+const fileStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'images')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.filename + '-' + file.originalname)
+  }
+})
+
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === 'image/png' ||
+    file.mimetype === 'image/jpg' ||
+    file.mimetype === 'image/jpeg'
+  ) {
+    cb(null, true)
+  } else {
+    cb(null, false)
+  }
+}
+
+// Set the HTML template engine EJS and the folder to render its
 app.set('view engine', 'ejs')
 app.set('views', 'views')
 
@@ -40,10 +64,14 @@ const shopRoutes = require('./routes/store/shop')
 const authRoutes = require('./routes/store/auth')
 const homeRoutes = require('./routes/main')
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(express.static(path.join(__dirname, 'public')))
+// All app.use() are Middleware
+app.use(bodyParser.urlencoded({ extended: false }))     // To convert all bodys URL to string with body-parser package
+app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single('image'))
+// app.use(multer({ storage: fileStorage }).single('image'))      // To save files updates from forms
+app.use(express.static(path.join(__dirname, 'public'))) // To indicate the public access folder to can read CSS, images, JavaScript, etc.
+app.use('/images', express.static(path.join(__dirname, 'images'))) // To indicate the public access folder to can read images with the /images route started.
 
-// Session used to login or shop cart example
+// To the Session used to login or shop cart example
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
@@ -51,15 +79,18 @@ app.use(session({
   store: store
 }))
 
-app.use(csrfProtection)
-app.use(flash())
+app.use(csrfProtection) // To generate tokens to protect against CSRF attacks in all views
+app.use(flash())        // To write in session and remove it once we have read it in all views
 
+// To save and share the csrfToken and if the user is logged in all views
 app.use((req, res, next) => {
+  console.log('isLoggeIn: ', req.session.isLoggedIn)
   res.locals.isAuthenticated = req.session.isLoggedIn
   res.locals.csrfToken = req.csrfToken()
   next()
 })
 
+// To check if have a session to find the user and save it in the req.user to share it in all views
 app.use((req, res, next) => {
   if (!req.session.user) {
     return next()
@@ -77,6 +108,7 @@ app.use((req, res, next) => {
     })
 })
 
+// To add routes for the URLs that start with...
 app.use('/:lang(' + languages + ')/examples/store/admin', adminRoutes)
 app.use('/:lang(' + languages + ')/examples/store/auth', authRoutes)
 app.use('/:lang(' + languages + ')/examples/store', shopRoutes)
@@ -99,20 +131,21 @@ app.use((error, req, res, next) => {
   })
 })
 
+// Connect to the database and start the server
 mongoose
-.connect(MONGODB_URI)
-.then(result => {
-  // Check if the environment variable is set to production environment
-  const desiredPort = process.env.PORT || 3000
+  .connect(MONGODB_URI)
+  .then(result => {
+    // Check if the environment variable is set to production environment
+    const desiredPort = process.env.PORT || 3000
 
-  // Check if the port is available with findAvailablePort method
-  findAvailablePort(desiredPort).then(port => {
-    app.listen(port, () => {
-      global.port = port
-      console.log(`server listening on port http://localhost:${port}`)
+    // Check if the port is available with findAvailablePort method
+    findAvailablePort(desiredPort).then(port => {
+      app.listen(port, () => {
+        global.port = port
+        console.log(`server listening on port http://localhost:${port}`)
+      })
     })
   })
-})
   .catch(err => {
     console.log(err)
   })

@@ -4,7 +4,6 @@ const Order = require('../models/order')
 exports.getProducts = (req, res, next) => {
   Product.find()
     .then(products => {
-      console.log('isLoggeIn: ', req.session.isLoggedIn)
       res.render('shop/product-list', {
         prods: products,
         pageTitle: 'All Products',
