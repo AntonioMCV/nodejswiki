@@ -168,14 +168,13 @@ exports.postDeleteProduct = (req, res, next) => {
 
 exports.getProducts = (req, res, next) => {
   Product.find({userId: req.user._id})
-    // .select('title price -_id')
-    // .populate('userId', 'name')
     .then(products => {
       console.log(products)
       res.render('shop/admin/products', {
         prods: products,
         pageTitle: 'Admin Products',
-        path: '/admin/products'
+        path: '/admin/products',
+        translates: global.lang.examples.store.adminProducts
       })
     })
     .catch(err => {
