@@ -7,6 +7,29 @@
     <%- include('./includes/navigation.ejs') %>
 
     <main class="container">
+        <%- include('./includes/documentation/infobox.ejs', {
+            model: {
+                path: 'models/product.js',
+                imports: 'Mongoose',
+                method: null,
+                steps: translates.model,
+                code: include('./includes/documentation/codes/models/product.ejs')
+            },
+            controller: {
+                path: 'controllers/shop.js',
+                imports: 'Product model',
+                method: 'getProducts()',
+                steps: translates.controller,
+                code: include('./includes/documentation/codes/controllers/shop-getProducts.ejs')
+            },
+            view: {
+                path: 'views/shop/product-list.ejs',
+                imports: null,
+                method: null,
+                steps: translates.view,
+                code: include('./includes/documentation/codes/views/product-list.ejs')
+            }
+        }) %>
         <% if (prods.length > 0) { %>
             <div class="grid">
                 <% for (let product of prods) { %>

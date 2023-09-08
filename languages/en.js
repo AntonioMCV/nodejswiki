@@ -91,7 +91,7 @@ var translations = {
   examples: {
     store: {
       navigation: {
-        shop: 'Shop',
+        shop: 'About the Store',
         products: 'Products',
         cart: 'Cart',
         orders: 'Orders',
@@ -100,8 +100,28 @@ var translations = {
       },
       index: {
         title: 'Shop with mongoose',
-        warning: 'To use this example it is necessary to have an account in <a href="https://www.mongodb.com/atlas/database" target="_blank">mogoDB</a>, you will have to change the mongoose connection configuration in app.js specifically line 50',
-        infoBox: 'For this example, the moongose library has been used for ease use in the mogoDB atlas database.'
+        warning: 'To better understand how this server has been built, see the different configurations and midlewares that have been defined, take a look at the <code>app.js</code> file.',
+        infoBox: 'For this example, use has been made of the MVC (Model View Controller) and the following packages or libraries: <h2>Native Packages</h2><ul><li><b>Path:</b> To use utilities for work with file and directory paths in file systems</li></ul><h2>Third Party Packages</h2><ul><li><b>Express:</b> To simplifies the proccess involved in handling HTTP requests and responses, routing, and middleware management.</li><li><b>Body-parser:</b> To convert all bodys URL to string with body-parser package</li><li><b>Mongoose:</b> To connect to our MongoDB database and simplify the interaction</li><li><b>Express-session:</b> To store and retrieve data in our session</li><b>Connect-mongodb-session:</b> To store and retrieve data in our session from MongoDB database<li><b>Csurf:</b> To generate tokens to protect against CSRF attacks</li><li><b>Connect-flash:</b> To write in session and remove it once we have read it</li><li><b>Multer:</b> To analize part incomming request for our files updates from forms</li></ul>In any case, it will be indicated on each of the example pages when we need to use each of these packages. You can browse the example from the green menu.'
+      },
+      products: {
+        infoBox: 'This page lists all the available products in the store, with the possibility of adding them to the cart if the user is logged in.',
+        model: {
+          step1: 'Product Mongoose schema is defined',
+          step2: 'Save as a Mongoose model'
+        },
+        controller: {
+          step1: 'Thanks to the import of the Product model it will be able to use Mongoose and its method <code><b>find()</b></code>',
+          step2: 'We make the call with Mongoose to the database so that it returns all the products that are in the Product collection with <code><b>Products.find()</b></code>',
+          step3: 'We render the template by passing it the purchased products'
+        },
+        view: {
+          step1: 'All products are listed',
+          step2: 'For each product it is checked that the user is logged in',
+          step3: 'If yes, the "Add to cart" button is displayed',
+          step4: 'Once confirmed, an add-to-cart.ejs include is made, passing the product of the iteration as a property',
+          step5: 'This will have a form with a hidden input with the id of the product that we have passed to it',
+          step6: 'All forms will have a hidden input with the csrfToken to protect against CSRF attacks'
+        }
       }
     }
   }

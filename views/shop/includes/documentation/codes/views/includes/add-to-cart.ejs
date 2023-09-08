@@ -1,0 +1,8 @@
+
+    <!-- add-to-cart.ejs -->
+
+    <form action="/<#= global.lang.current #>/examples/store/cart" method="post">
+      <input type="hidden" name="_csrf" value="<#= csrfToken #>" />
+      <button type="submit" class="btn btn-success">Add to cart</button>
+      <input type="hidden" name="productId" value="<#= product._id #>" />
+    </form>

@@ -1,0 +1,10 @@
+<% steps = Object.entries(stepsTranslates) %> <% if (steps.length > 0) { %>
+<li>
+  <b>Steps:</b>
+  <ul>
+    <% for (let step of steps) { %>
+    <li><%- step[1] %></li>
+    <% } %>
+  </ul>
+</li>
+<% } %>
