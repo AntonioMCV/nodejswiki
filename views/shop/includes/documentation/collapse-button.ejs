@@ -1,0 +1,43 @@
+<button
+  class="btn btn-outline-dark w-100 text-start m-1"
+  type="button"
+  data-bs-toggle="collapse"
+  data-bs-target="#<%= buttonText %>"
+  aria-expanded="false"
+  aria-controls="<%= buttonText %>"
+>
+  <%= buttonText %>
+</button>
+<div class="collapse" id="<%= buttonText %>">
+  <ul>
+    <li><b>Path: </b><%= path %></li>
+    <% if (imports) { %>
+    <li><b>Imports: </b><%= imports %></li>
+    <% } %> <% if (method) { %>
+    <li><b>Method:</b> <%= method %></li>
+    <% } %> <%- include('steps.ejs', { stepsTranslates: steps }) %> <% if (code)
+    { %>
+    <li>
+      <a
+        data-bs-toggle="collapse"
+        href="#<%= buttonText %>-code"
+        role="button"
+        aria-expanded="false"
+        aria-controls="<%= buttonText %>-code"
+      >
+        <b>Toggle Code:</b>
+      </a>
+    </li>
+    <% } %>
+  </ul>
+  <% if (code) { %>
+  <pre
+    class="bg-body-secondary rounded m-4 border border-2 border-secondary collapse"
+    id="<%= buttonText %>-code"
+  >
+    <code>
+<%= code %>
+    </code>
+  </pre>
+  <% } %>
+</div>

@@ -1,0 +1,28 @@
+<div class="alert alert-secondary">
+  <% let steps %>
+  <%= translates.infoBox %>
+  <%- include('collapse-button.ejs', {
+    buttonText: 'Model',
+    path: model.path,
+    imports: model.imports,
+    method: model.method,
+    steps: model.steps,
+    code: model.code
+  }) %>
+  <%- include('collapse-button.ejs', {
+    buttonText: 'Controller',
+    path: controller.path,
+    imports: controller.imports,
+    method: controller.method,
+    steps: controller.steps,
+    code: controller.code
+  }) %>
+  <%- include('collapse-button.ejs', {
+    buttonText: 'View',
+    path: view.path,
+    imports: view.imports,
+    method: view.method,
+    steps: view.steps,
+    code: view.code
+  }) %>
+</div>

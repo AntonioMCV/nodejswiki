@@ -90,7 +90,7 @@ var translations = {
   examples: {
     store: {
       navigation: {
-        shop: 'Tienda',
+        shop: 'Sobre la Tienda',
         products: 'Productos',
         cart: 'Carrito',
         orders: 'Ordenes',
@@ -99,8 +99,50 @@ var translations = {
       },
       index: {
         title: 'Tienda con mongoose',
-        warning: 'Para poder utilizar este ejemplo es necesario tener una cuenta en <a href="https://www.mongodb.com/atlas/database" target="_blank">mogoDB</a>, Deberas cambiar a su vez la configuración de la conexión de mongoose en app.js concretamente la linea 50',
-        infoBox: 'Para este ejemplo se ha hecho uso de la libreria moongose para mayor facilidad en el uso de la base de datos de mogoDB atlas.'
+        warning: 'Para comprender mejor como se ha levantado este servidor, ver las diferentes configuraciones y midlewares que se han definido echa un vistazo al archivo <code>app.js</code>',
+        infoBox: 'Para este ejemplo se ha hecho uso del MVC (Modelo Vista Controlador) y de los siguientes paquetes o librerias: <h2>Paquetes Nativos</h2><ul><li><b>Path:</b> Para utilizar utilidades para trabajar con rutas de archivos y directorios en sistemas de archivos</li></ul><h2>Paquetes de Terceros</h2><ul><li><b>Express:</b> Para simplificar el proceso involucrado en el manejo de solicitudes y respuestas HTTP, enrutamiento y administración de middleware.</li><li><b>Body-parser:</b> Para convertir todas las URL del cuerpo en cadena con el paquete body-parser</li><li><b>Mongoose:</b> Para conectarse a nuestra base de datos MongoDB y simplificar la interacción</li><li ><b>Express-session:</b> Para almacenar y recuperar datos en nuestra sesión</li><b>Connect-mongodb-session:</b> Para almacenar y recuperar datos en nuestra sesión de la base de datos MongoDB<li ><b>Csurf:</b> Para generar tokens de protección contra ataques CSRF</li><li><b>Connect-flash:</b> Para escribir en sesión y eliminarlo una vez lo hayamos leído</ li><li><b>Multer:</b> Para analizar parte de las solicitudes entrantes de actualizaciones de nuestros archivos desde formularios</li></ul>En cualquier caso se irá indicando en cada una de las páginas del ejemplo cuando requerimos usar cada uno de estos paquetes. Puedes ir navegando por el ejemplo desde el menu verde.'
+      },
+      products: {
+        infoBox: 'En esta página se listan todos los productos disponibles de la tienda, con la posibilidad de agregarlos al carrito si el usuario esta logeado.',
+        model: {
+          step1: 'Se define el esquema Mongoose del producto',
+          step2: 'Se guarda como un modelo Mongoose'
+        },
+        controller: {
+          step1: 'Gracias a la importacion del modelo Product este podra hacer uso de Mongoose y su metodo <code><b>find()</b></code>',
+          step2: 'Hacemos la llamada con Moongose a la base de datos para que nos devuelva todos los productos que hay en la colección Product con <code><b>Products.find()</b></code>',
+          step3: 'Renderizamos la plantilla pasandole los productos adquiridos'
+        },
+        view: {
+          step1: 'Se listan todos los productos',
+          step2: 'Por cada producto se comprueba que el usuario este logueado',
+          step3: 'En caso afirmativo se muestra el botón "Add to cart"',
+          step4: 'Una vez confirmado se hace un include add-to-cart.ejs pasandole el producto de la iteracción como propiedad',
+          step5: 'Este llevará un formulario con un input oculto con la id del producto que le hemos pasado',
+          step6: 'Todos los formularios llevarán un input oculto con el csrfToken para tener protección contra ataques CSRF'
+        }
+      },
+      productDetail: {
+        infoBox: 'Se muestra la página de detalle de un producto.',
+        model: {
+          step1: 'Se define el esquema Mongoose del producto',
+          step2: 'Se guarda como un modelo Mongoose'
+        },
+        controller: {
+          step1: 'Importacion del modelo Product',
+          step2: 'Guardamos el id del producto que nos llega a través del paramatro de la URL en la variable <code><b>prodId</b></code>',
+          step3: 'Gracias a la importacion del modelo Product este podra hacer uso de Mongoose y su metodo <code><b>findById()</b></code>',
+          step4: 'Hacemos la llamada con Moongose a la base de datos para que busque y nos devuelva el producto que hay en la colección Product con <code><b>Products.findById(prodId)</b></code>',
+          step5: 'Renderizamos la plantilla pasandole el producto adquirido'
+        },
+        view: {
+          step1: 'Se muestra el producto',
+          step2: 'Se comprueba que el usuario haya iniciado sesión',
+          step3: 'En caso afirmativo se muestra el botón "Add to cart"',
+          step4: 'Una vez confirmado se hace un include add-to-cart.ejs',
+          step5: 'Este llevará un formulario con un input oculto con la id del producto',
+          step6: 'Todos los formularios llevarán un input oculto con el csrfToken para tener protección contra ataques CSRF'
+        }
       }
     }
   }

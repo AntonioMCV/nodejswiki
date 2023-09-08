@@ -4,16 +4,34 @@
 
 <body>
     <%- include('../includes/navigation.ejs') %>
-    <%- include('./includes/navigation.ejs') %>
 
     <main class="container">
         <h1 class="bg-dark text-white text-center my-4 py-4"><%= translates.title %></h1>
-        <p class="alert alert-warning">
+        <div class="alert alert-warning">
             <%- translates.warning %>
-          </p>
-        <div class="alert alert-secondary">
-          <p><%= translates.infoBox %></p>
+            <button
+                class="btn btn-outline-dark w-100 text-start m-1"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#ToggleCode"
+                aria-expanded="false"
+                aria-controls="ToggleCode"
+            >
+                Toggle Code app.js file
+            </button>
+            <pre
+                class="bg-body-secondary rounded m-4 border border-2 border-secondary collapse"
+                id="ToggleCode"
+              >
+                <code>
+<%- include('./includes/documentation/codes/app.ejs') %>
+                </code>
+            </pre>
         </div>
+        <div class="alert alert-secondary">
+          <p><%- translates.infoBox %></p>
+        </div>
+        <%- include('./includes/navigation.ejs') %>
         <% if (prods.length > 0) { %>
             <div class="grid">
                 <% for (let product of prods) { %>
@@ -22,7 +40,7 @@
                             <h1 class="product__title"><%= product.title %></h1>
                         </header>
                         <div class="card__image">
-                            <img src="<%= product.imageUrl %>"
+                            <img src="/<%= product.imageUrl %>"
                                 alt="<%= product.title %>">
                         </div>
                         <div class="card__content">
