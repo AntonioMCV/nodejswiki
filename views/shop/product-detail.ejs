@@ -6,16 +6,41 @@
     <%- include('../includes/navigation.ejs') %>
     <%- include('./includes/navigation.ejs') %>
 
-    <main class="centered container">
-        <h1><%= product.title %></h1>
-        <hr>
-        <div>
-          <img src="/<%= product.imageUrl %>" alt="<%= product.title %>">
+    <main class="container">
+        <%- include('./includes/documentation/infobox.ejs', {
+            model: {
+                path: 'models/product.js',
+                imports: 'Mongoose',
+                method: null,
+                steps: translates.model,
+                code: include('./includes/documentation/codes/models/product.ejs')
+            },
+            controller: {
+                path: 'controllers/shop.js',
+                imports: 'Product model',
+                method: 'getProduct()',
+                steps: translates.controller,
+                code: include('./includes/documentation/codes/controllers/shop-getProduct.ejs')
+            },
+            view: {
+                path: 'views/shop/product-detail.ejs',
+                imports: null,
+                method: null,
+                steps: translates.view,
+                code: include('./includes/documentation/codes/views/product-detail.ejs')
+            }
+        }) %>
+        <div class="centered">
+            <h1><%= product.title %></h1>
+            <hr>
+            <div>
+              <img src="/<%= product.imageUrl %>" alt="<%= product.title %>">
+            </div>
+            <h2><%= product.price %></h2>
+            <p><%= product.description %></p>
+            <% if(isAuthenticated) { %>
+                <%- include('./includes/add-to-cart.ejs') %>
+            <% } %>
         </div>
-        <h2><%= product.price %></h2>
-        <p><%= product.description %></p>
-        <% if(isAuthenticated) { %>
-            <%- include('./includes/add-to-cart.ejs') %>
-        <% } %>
     </main>
 <%- include('./includes/end.ejs') %>

@@ -121,6 +121,28 @@ var translations = {
           step5: 'Este llevará un formulario con un input oculto con la id del producto que le hemos pasado',
           step6: 'Todos los formularios llevarán un input oculto con el csrfToken para tener protección contra ataques CSRF'
         }
+      },
+      productDetail: {
+        infoBox: 'Se muestra la página de detalle de un producto.',
+        model: {
+          step1: 'Se define el esquema Mongoose del producto',
+          step2: 'Se guarda como un modelo Mongoose'
+        },
+        controller: {
+          step1: 'Importacion del modelo Product',
+          step2: 'Guardamos el id del producto que nos llega a través del paramatro de la URL en la variable <code><b>prodId</b></code>',
+          step3: 'Gracias a la importacion del modelo Product este podra hacer uso de Mongoose y su metodo <code><b>findById()</b></code>',
+          step4: 'Hacemos la llamada con Moongose a la base de datos para que busque y nos devuelva el producto que hay en la colección Product con <code><b>Products.findById(prodId)</b></code>',
+          step5: 'Renderizamos la plantilla pasandole el producto adquirido'
+        },
+        view: {
+          step1: 'Se muestra el producto',
+          step2: 'Se comprueba que el usuario haya iniciado sesión',
+          step3: 'En caso afirmativo se muestra el botón "Add to cart"',
+          step4: 'Una vez confirmado se hace un include add-to-cart.ejs',
+          step5: 'Este llevará un formulario con un input oculto con la id del producto',
+          step6: 'Todos los formularios llevarán un input oculto con el csrfToken para tener protección contra ataques CSRF'
+        }
       }
     }
   }

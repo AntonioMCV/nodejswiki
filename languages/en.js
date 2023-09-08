@@ -122,6 +122,28 @@ var translations = {
           step5: 'This will have a form with a hidden input with the id of the product that we have passed to it',
           step6: 'All forms will have a hidden input with the csrfToken to protect against CSRF attacks'
         }
+      },
+      productDetail: {
+        infoBox: 'A product detail page is displayed.',
+        model: {
+          step1: 'Product Mongoose schema is defined',
+          step2: 'Save as a Mongoose model'
+        },
+        controller: {
+          step1: 'Import of the Product model',
+          step2: 'We save the id of the product that comes to us through the URL parameter in the variable <code><b>prodId</b></code>',
+          step3: 'Thanks to the import of the Product model it will be able to use Mongoose and its <code><b>findById()</b></code> method',
+          step4: 'We make the call with Moongose to the database so that it searches and returns the product that is in the Product collection with <code><b>Products.findById(prodId)</b></code>',
+          step5: 'We render the template by passing it the purchased product'
+        },
+        view: {
+          step1: 'Product is displayed',
+          step2: 'Checks that the user is logged in',
+          step3: 'If yes, the "Add to cart" button is displayed',
+          step4: 'Once confirmed, an include add-to-cart.ejs is done',
+          step5: 'This will have a form with a hidden input with the product id',
+          step6: 'All forms will have a hidden input with the csrfToken to protect against CSRF attacks'
+        }
       }
     }
   }
