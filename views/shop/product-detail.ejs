@@ -9,11 +9,11 @@
     <main class="container">
         <%- include('./includes/documentation/infobox.ejs', {
             app: {
-                path: null,
-                imports: null,
+                path: 'app.js',
+                imports: 'Mongoose, express-session, connect-mongodb-session, csurf',
                 method: null,
-                steps: null,
-                code: null
+                steps: translates.app,
+                code: include('./includes/documentation/codes/app-session-csrftoken.ejs')
             },
             model: {
                 path: 'models/product.js',

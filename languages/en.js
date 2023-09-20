@@ -105,6 +105,13 @@ var translations = {
       },
       products: {
         infoBox: 'This page lists all the available products in the store, with the possibility of adding them to the cart if the user is logged in.',
+        app: {
+          step1: 'In this view, if the user is logged in, the add to cart button will appear. When you press one of the buttons, a form will be sent and these must always be protected from CSRF attacks, so we must add certain middlewares to our file app',
+          step2: 'A store is defined to be used in the session middleware',
+          step3: 'We define the session midleware with our store that will save session data in our database',
+          step4: 'A csrf protection middleware is defined',
+          step5: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
+        },
         model: {
           step1: 'Product Mongoose schema is defined',
           step2: 'Save as a Mongoose model'
@@ -125,6 +132,13 @@ var translations = {
       },
       productDetail: {
         infoBox: 'A product detail page is displayed.',
+        app: {
+          step1: 'In this view, if the user is logged in, the add to cart button will appear. When you press one of the buttons, a form will be sent and these must always be protected from CSRF attacks, so we must add certain middlewares to our file app',
+          step2: 'A store is defined to be used in the session middleware',
+          step3: 'We define the session midleware with our store that will save session data in our database',
+          step4: 'A csrf protection middleware is defined',
+          step5: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
+        },
         model: {
           step1: 'Product Mongoose schema is defined',
           step2: 'Save as a Mongoose model'

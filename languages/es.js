@@ -104,6 +104,13 @@ var translations = {
       },
       products: {
         infoBox: 'En esta página se listan todos los productos disponibles de la tienda, con la posibilidad de agregarlos al carrito si el usuario esta logeado.',
+        app: {
+          step1: 'En esta vista si el usuario esta logeado aparecerá el botón añadir al carro, al pulsar uno de los botones se enviará un formulario y estos siempre tienen que estar protegidos de ataques CSRF, con lo cual hay que añadir ciertos middlewares en nuestro archivo app',
+          step2: 'Se define una store para usarla en el middleware de la sesión',
+          step3: 'Definimos el midleware de sesión con nuestra store que nos guardara datos de sesión en nuestra base de datos',
+          step4: 'Se define un middleware de protección csrf',
+          step5: 'Se define un middleware donde se guardarán en variables locales la autentificación y el csrfToken'
+        },
         model: {
           step1: 'Se define el esquema Mongoose del producto',
           step2: 'Se guarda como un modelo Mongoose'
@@ -124,6 +131,13 @@ var translations = {
       },
       productDetail: {
         infoBox: 'Se muestra la página de detalle de un producto.',
+        app: {
+          step1: 'En esta vista si el usuario esta logeado aparecerá el botón añadir al carro, al pulsar uno de los botones se enviará un formulario y estos siempre tienen que estar protegidos de ataques CSRF, con lo cual hay que añadir ciertos middlewares en nuestro archivo app',
+          step2: 'Se define una store para usarla en el middleware de la sesión',
+          step3: 'Definimos el midleware de sesión con nuestra store que nos guardara datos de sesión en nuestra base de datos',
+          step4: 'Se define un middleware de protección csrf',
+          step5: 'Se define un middleware donde se guardarán en variables locales la autentificación y el csrfToken'
+        },
         model: {
           step1: 'Se define el esquema Mongoose del producto',
           step2: 'Se guarda como un modelo Mongoose'
