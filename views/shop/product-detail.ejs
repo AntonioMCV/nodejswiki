@@ -8,6 +8,13 @@
 
     <main class="container">
         <%- include('./includes/documentation/infobox.ejs', {
+            app: {
+                path: null,
+                imports: null,
+                method: null,
+                steps: null,
+                code: null
+            },
             model: {
                 path: 'models/product.js',
                 imports: 'Mongoose',
