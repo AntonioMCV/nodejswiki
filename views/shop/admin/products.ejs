@@ -7,6 +7,36 @@
     <%- include('../includes/navigation.ejs') %>
 
     <main class="container">
+        <%- include('../includes/documentation/infobox.ejs', {
+            app: {
+                path: 'app.js',
+                imports: 'Mongoose, express-session, connect-mongodb-session, csurf',
+                method: null,
+                steps: translates.app,
+                code: include('../includes/documentation/codes/app-session-csrftoken.ejs')
+            },
+            model: {
+                path: 'models/product.js',
+                imports: 'Mongoose',
+                method: null,
+                steps: translates.model,
+                code: include('../includes/documentation/codes/models/product.ejs')
+            },
+            controller: {
+                path: 'controllers/admin.js',
+                imports: 'Product model',
+                method: 'getProducts()',
+                steps: translates.controller,
+                code: include('../includes/documentation/codes/controllers/admin-getProducts.ejs')
+            },
+            view: {
+                path: 'views/shop/admin/products.ejs',
+                imports: null,
+                method: null,
+                steps: translates.view,
+                code: include('../includes/documentation/codes/views/admin/products.ejs')
+            }
+        }) %>
         <% if (prods.length > 0) { %>
             <div class="grid">
                 <% for (let product of prods) { %>

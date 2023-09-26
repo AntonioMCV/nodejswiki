@@ -1,6 +1,13 @@
 <div class="alert alert-secondary">
-  <% let steps %>
   <%= translates.infoBox %>
+  <%- include('collapse-button.ejs', {
+    buttonText: 'App',
+    path: app.path,
+    imports: app.imports,
+    method: app.method,
+    steps: app.steps,
+    code: app.code
+  }) %>
   <%- include('collapse-button.ejs', {
     buttonText: 'Model',
     path: model.path,

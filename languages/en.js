@@ -101,10 +101,17 @@ var translations = {
       index: {
         title: 'Shop with mongoose',
         warning: 'To better understand how this server has been built, see the different configurations and midlewares that have been defined, take a look at the <code>app.js</code> file.',
-        infoBox: 'For this example, use has been made of the MVC (Model View Controller) and the following packages or libraries: <h2>Native Packages</h2><ul><li><b>Path:</b> To use utilities for work with file and directory paths in file systems</li></ul><h2>Third Party Packages</h2><ul><li><b>Express:</b> To simplifies the proccess involved in handling HTTP requests and responses, routing, and middleware management.</li><li><b>Body-parser:</b> To convert all bodys URL to string with body-parser package</li><li><b>Mongoose:</b> To connect to our MongoDB database and simplify the interaction</li><li><b>Express-session:</b> To store and retrieve data in our session</li><b>Connect-mongodb-session:</b> To store and retrieve data in our session from MongoDB database<li><b>Csurf:</b> To generate tokens to protect against CSRF attacks</li><li><b>Connect-flash:</b> To write in session and remove it once we have read it</li><li><b>Multer:</b> To analize part incomming request for our files updates from forms</li></ul>In any case, it will be indicated on each of the example pages when we need to use each of these packages. You can browse the example from the green menu.'
+        infoBox: 'For this example, use has been made of the MVC (Model View Controller) and the following packages or libraries: <h2>Native Packages</h2><ul><li><b>Path:</b> To use utilities for work with file and directory paths in file systems</li></ul><h2>Third Party Packages</h2><ul><li><b>Express:</b> To simplifies the proccess involved in handling HTTP requests and responses, routing, and middleware management.</li><li><b>Body-parser:</b> To convert all bodys URL to string with body-parser package</li><li><b>Mongoose:</b> To connect to our MongoDB database and simplify the interaction</li><li><b>Express-session:</b> To store and retrieve data in our session</li><li><b>Connect-mongodb-session:</b> To store and retrieve data in our session from MongoDB database</li><li><b>Csurf:</b> To generate tokens to protect against CSRF attacks</li><li><b>Connect-flash:</b> To write in session and remove it once we have read it</li><li><b>Multer:</b> To analize part incomming request for our files updates from forms</li></ul>In any case, it will be indicated on each of the example pages when we need to use each of these packages. You can browse the example from the green menu.'
       },
       products: {
         infoBox: 'This page lists all the available products in the store, with the possibility of adding them to the cart if the user is logged in.',
+        app: {
+          step1: 'In this view, if the user is logged in, the add to cart button will appear. When you press one of the buttons, a form will be sent and these must always be protected from CSRF attacks, so we must add certain middlewares to our file app',
+          step2: 'A store is defined to be used in the session middleware',
+          step3: 'We define the session midleware with our store that will save session data in our database',
+          step4: 'A csrf protection middleware is defined',
+          step5: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
+        },
         model: {
           step1: 'Product Mongoose schema is defined',
           step2: 'Save as a Mongoose model'
@@ -125,6 +132,13 @@ var translations = {
       },
       productDetail: {
         infoBox: 'A product detail page is displayed.',
+        app: {
+          step1: 'In this view, if the user is logged in, the add to cart button will appear. When you press one of the buttons, a form will be sent and these must always be protected from CSRF attacks, so we must add certain middlewares to our file app',
+          step2: 'A store is defined to be used in the session middleware',
+          step3: 'We define the session midleware with our store that will save session data in our database',
+          step4: 'A csrf protection middleware is defined',
+          step5: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
+        },
         model: {
           step1: 'Product Mongoose schema is defined',
           step2: 'Save as a Mongoose model'
@@ -143,6 +157,51 @@ var translations = {
           step4: 'Once confirmed, an include add-to-cart.ejs is done',
           step5: 'This will have a form with a hidden input with the product id',
           step6: 'All forms will have a hidden input with the csrfToken to protect against CSRF attacks'
+        }
+      },
+      adminProducts: {
+        infoBox: 'This page lists only the products that have been created by the session user, with the possibility of editing or deleting them.',
+        app: {
+          step1: 'In the routes file it is checked if the user is logged in to render the view, this is done through the isAuth middleware, pressing one of the buttons will send a form and these always have to be protected from CSRF attacks, thus we have to add certain middlewares in our app file',
+          step2: 'A store is defined to be used in the session middleware',
+          step3: 'We define the session midleware with our store that will save session data in our database',
+          step4: 'A csrf protection middleware is defined',
+          step5: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
+        },
+        model: {
+          step1: 'Product Mongoose schema is defined',
+          step2: 'Save as a Mongoose model'
+        },
+        controller: {
+          step1: 'Thanks to the import of the Product model it will be able to use Mongoose and its <code><b>find()</b></code> method',
+          step2: 'We make the call with Moongose to the database so that it returns the products that have a <code><b>userId</b></code> that matches the <code><b>req.user ._id</b></code> where we have saved the user´s session id (This is done from the <code><b>app.js</b></code> middleware so that it is available in all views). To do this we make the call by passing it an object with the filter <code><b>Product.find({userId: req.user._id})</b></code>',
+          step3: 'We render the template by passing it the purchased products'
+        },
+        view: {
+          step1: 'All products are listed',
+          step2: 'Each one will have a link to edit with the corresponding product id and an editing attribute set to true to differentiate in the view it leads to if you want to edit or add a new product',
+          step3: 'Each one will have a form with a hidden input with the id of the corresponding product so that when you press the delete button you know which one to delete',
+          step4: 'All forms will have a hidden input with the csrfToken to have protection against CSRF attacks'
+        }
+      },
+      cart: {
+        infoBox: 'The products that have been added to the shopping cart are displayed.',
+        app: {
+          step1: 'Pressing one of the buttons will send a form and these always have to be protected from CSRF attacks, so we must add certain middlewares in our app file',
+          step2: 'A store is defined to be used in the session middleware',
+          step3: 'We define the session midleware with our store that will save session data in our database',
+          step4: 'A csrf protection middleware is defined',
+          step5: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
+        },
+        controller: {
+          step1: 'We use the Mongoose method <code><b>populate()</b></code> so that it can show us all the product data, if we did not use it only the product id would appear',
+          step2: 'We render the template by passing it the purchased products'
+        },
+        view: {
+          step1: 'All products are listed',
+          step2: 'Each one will have a form with a hidden input with the id of the corresponding product so that when you press the delete button you know which one to delete',
+          step3: 'A form with the order button',
+          step4: 'All forms will have a hidden input with the csrfToken to have protection against CSRF attacks'
         }
       }
     }

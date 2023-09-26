@@ -7,6 +7,36 @@
    <%- include('./includes/navigation.ejs') %>
 
     <main class="container">
+      <%- include('./includes/documentation/infobox.ejs', {
+        app: {
+            path: 'app.js',
+            imports: 'Mongoose, express-session, connect-mongodb-session, csurf',
+            method: null,
+            steps: translates.app,
+            code: include('./includes/documentation/codes/app-session-csrftoken.ejs')
+        },
+        model: {
+            path: null,
+            imports: null,
+            method: null,
+            steps: null,
+            code: null
+        },
+        controller: {
+            path: 'controllers/shop.js',
+            imports: 'Product model',
+            method: 'getCart()',
+            steps: translates.controller,
+            code: include('./includes/documentation/codes/controllers/admin-getCart.ejs')
+        },
+        view: {
+            path: 'views/shop/admin/cart.ejs',
+            imports: null,
+            method: null,
+            steps: translates.view,
+            code: include('./includes/documentation/codes/views/admin/cart.ejs')
+        }
+      }) %>
       <% if (products.length > 0) { %>
         <ul class="cart__item-list">
           <% products.forEach(p => { %>
