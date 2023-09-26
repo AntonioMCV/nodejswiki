@@ -161,6 +161,13 @@ var translations = {
       },
       adminProducts: {
         infoBox: 'This page lists only the products that have been created by the session user, with the possibility of editing or deleting them.',
+        app: {
+          step1: 'In the routes file it is checked if the user is logged in to render the view, this is done through the isAuth middleware, pressing one of the buttons will send a form and these always have to be protected from CSRF attacks, thus we have to add certain middlewares in our app file',
+          step2: 'A store is defined to be used in the session middleware',
+          step3: 'We define the session midleware with our store that will save session data in our database',
+          step4: 'A csrf protection middleware is defined',
+          step5: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
+        },
         model: {
           step1: 'Product Mongoose schema is defined',
           step2: 'Save as a Mongoose model'
@@ -174,6 +181,26 @@ var translations = {
           step1: 'All products are listed',
           step2: 'Each one will have a link to edit with the corresponding product id and an editing attribute set to true to differentiate in the view it leads to if you want to edit or add a new product',
           step3: 'Each one will have a form with a hidden input with the id of the corresponding product so that when you press the delete button you know which one to delete',
+          step4: 'All forms will have a hidden input with the csrfToken to have protection against CSRF attacks'
+        }
+      },
+      cart: {
+        infoBox: 'The products that have been added to the shopping cart are displayed.',
+        app: {
+          step1: 'Pressing one of the buttons will send a form and these always have to be protected from CSRF attacks, so we must add certain middlewares in our app file',
+          step2: 'A store is defined to be used in the session middleware',
+          step3: 'We define the session midleware with our store that will save session data in our database',
+          step4: 'A csrf protection middleware is defined',
+          step5: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
+        },
+        controller: {
+          step1: 'We use the Mongoose method <code><b>populate()</b></code> so that it can show us all the product data, if we did not use it only the product id would appear',
+          step2: 'We render the template by passing it the purchased products'
+        },
+        view: {
+          step1: 'All products are listed',
+          step2: 'Each one will have a form with a hidden input with the id of the corresponding product so that when you press the delete button you know which one to delete',
+          step3: 'A form with the order button',
           step4: 'All forms will have a hidden input with the csrfToken to have protection against CSRF attacks'
         }
       }

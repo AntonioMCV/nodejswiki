@@ -160,6 +160,13 @@ var translations = {
       },
       adminProducts: {
         infoBox: 'En esta página se listan solo los productos que han sido creados por el usuario de la sesión, con la posibilidad de editarlos o borrarlos.',
+        app: {
+          step1: 'En el archivo de rutas se comprueba si el usuario esta logeado para renderizar la vista, esto se hace por medio del middleware isAuth, al pulsar uno de los botones se enviará un formulario y estos siempre tienen que estar protegidos de ataques CSRF, con lo cual hay que añadir ciertos middlewares en nuestro archivo app',
+          step2: 'Se define una store para usarla en el middleware de la sesión',
+          step3: 'Definimos el midleware de sesión con nuestra store que nos guardara datos de sesión en nuestra base de datos',
+          step4: 'Se define un middleware de protección csrf',
+          step5: 'Se define un middleware donde se guardarán en variables locales la autentificación y el csrfToken'
+        },
         model: {
           step1: 'Se define el esquema Mongoose del producto',
           step2: 'Se guarda como un modelo Mongoose'
@@ -173,6 +180,26 @@ var translations = {
           step1: 'Se listan todos los productos',
           step2: 'Cada uno llevará un enlace para editar con la id del producto correspondiente y un atributo de edicion puesto a true para diferenciar en la vista a la que lleva si se quiere editar o añadir un producto nuevo',
           step3: 'Cada uno llevará un formulario con un input oculto con la id del producto correspondiente para que al presionar el botón delete sepa cual tiene que borrar',
+          step4: 'Todos los formularios llevarán un input oculto con el csrfToken para tener protección contra ataques CSRF'
+        }
+      },
+      cart: {
+        infoBox: 'Se muestran los productos que se han añadido en el carrito de la compra.',
+        app: {
+          step1: 'Al pulsar uno de los botones se enviará un formulario y estos siempre tienen que estar protegidos de ataques CSRF, con lo cual hay que añadir ciertos middlewares en nuestro archivo app',
+          step2: 'Se define una store para usarla en el middleware de la sesión',
+          step3: 'Definimos el midleware de sesión con nuestra store que nos guardara datos de sesión en nuestra base de datos',
+          step4: 'Se define un middleware de protección csrf',
+          step5: 'Se define un middleware donde se guardarán en variables locales la autentificación y el csrfToken'
+        },
+        controller: {
+          step1: 'Usamos el metodo de Mongoose <code><b>populate()</b></code> para que nos pueda mostrar todos los datos del producto, si no lo usaramos solo nos apareceria el id del producto',
+          step2: 'Renderizamos la plantilla pasandole los productos adquiridos'
+        },
+        view: {
+          step1: 'Se listan todos los productos',
+          step2: 'Cada uno llevará un formulario con un input oculto con la id del producto correspondiente para que al presionar el botón delete sepa cual tiene que borrar',
+          step3: 'Un formulario con el botón order',
           step4: 'Todos los formularios llevarán un input oculto con el csrfToken para tener protección contra ataques CSRF'
         }
       }

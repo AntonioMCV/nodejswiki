@@ -8,6 +8,13 @@
 
     <main class="container">
         <%- include('../includes/documentation/infobox.ejs', {
+            app: {
+                path: 'app.js',
+                imports: 'Mongoose, express-session, connect-mongodb-session, csurf',
+                method: null,
+                steps: translates.app,
+                code: include('../includes/documentation/codes/app-session-csrftoken.ejs')
+            },
             model: {
                 path: 'models/product.js',
                 imports: 'Mongoose',
@@ -18,7 +25,7 @@
             controller: {
                 path: 'controllers/admin.js',
                 imports: 'Product model',
-                method: 'getProduct()',
+                method: 'getProducts()',
                 steps: translates.controller,
                 code: include('../includes/documentation/codes/controllers/admin-getProducts.ejs')
             },
