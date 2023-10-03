@@ -1,0 +1,13 @@
+  exports.getLogin = (req, res, next) => {
+    res.render('shop/auth/login', {
+      pageTitle: 'Login',
+      path: '/login',
+      errorMessage: req.flash('error'),
+      oldInput: {
+        email: '',
+        password: ''
+      },
+      validationErrors: [],
+      translates: global.lang.examples.store.login
+    })
+  }

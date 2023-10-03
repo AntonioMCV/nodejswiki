@@ -7,6 +7,36 @@
   <%- include('../../includes/navigation.ejs') %>
   <%- include('../includes/navigation.ejs') %>
   <main class="container">
+    <%- include('../includes/documentation/infobox.ejs', {
+        app: {
+            path: 'app.js',
+            imports: 'Express-validator (Realmente en el archivo de rutas), connect-flash, Mongoose, express-session, connect-mongodb-session, csurf',
+            method: null,
+            steps: translates.app,
+            code: include('../includes/documentation/codes/app-flash-session-csrftoken.ejs')
+        },
+        model: {
+            path: null,
+            imports: null,
+            method: null,
+            steps: null,
+            code: null
+        },
+        controller: {
+            path: 'controllers/auth.js',
+            imports: null,
+            method: 'getSignup()',
+            steps: translates.controller,
+            code: include('../includes/documentation/codes/controllers/auth-signup.ejs')
+        },
+        view: {
+            path: 'views/shop/auth/login.ejs',
+            imports: null,
+            method: null,
+            steps: translates.view,
+            code: include('../includes/documentation/codes/views/auth/signup.ejs')
+        }
+    }) %>
     <% if(errorMessage.length) { %>
         <div class="alert alert-danger"><%= errorMessage %></div>
     <% } %>

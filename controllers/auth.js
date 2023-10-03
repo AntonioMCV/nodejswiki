@@ -29,7 +29,8 @@ exports.getLogin = (req, res, next) => {
       email: '',
       password: ''
     },
-    validationErrors: []
+    validationErrors: [],
+    translates: global.lang.examples.store.login
   })
 }
 
@@ -43,7 +44,8 @@ exports.getSignup = (req, res, next) => {
       password: '',
       confirmPassword: ''
     },
-    validationErrors: []
+    validationErrors: [],
+    translates: global.lang.examples.store.signup
   })
 }
 

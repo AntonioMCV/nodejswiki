@@ -203,6 +203,48 @@ var translations = {
           step3: 'A form with the order button',
           step4: 'All forms will have a hidden input with the csrfToken to have protection against CSRF attacks'
         }
+      },
+      login: {
+        infoBox: 'The login page is displayed.',
+        app: {
+          step1: 'In this view form validations will be made thanks to the <code><b>express-validator</b></code> library in the routes file and it will be there where we do the validations for each type of field. ',
+          step2: 'When the field is incorrect, an error message will be saved in the session and once shown in the view it will be deleted, this will be possible with the <code><b>connect-flash</b></code> library, so we use it through <code><b>app.use</b></code>.',
+          step3: 'A store is defined to be used in the session middleware',
+          step4: 'We define the session midleware with our store that will save session data in our database',
+          step5: 'A csrf protection middleware is defined',
+          step6: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
+        },
+        controller: {
+          step1: 'Render the template by panning the attributes',
+          step2: 'Highlight the use of flash in the request in case we come from a post with errors'
+        },
+        view: {
+          step1: 'We check if we have errors to show them',
+          step2: 'For each of the fields we will look to see if it contains validation errors to know if the CSS class <code><b>invalid</b></code> should be added',
+          step3: 'It will also be checked if each field had something written in a previous render',
+          step4: 'The form will have a hidden input with the csrfToken to protect against CSRF attacks'
+        }
+      },
+      signup: {
+        infoBox: 'The signup page is displayed.',
+        app: {
+          step1: 'In this view form validations will be made thanks to the <code><b>express-validator</b></code> library in the routes file and it will be there where we do the validations for each type of field. ',
+          step2: 'When the field is incorrect, an error message will be saved in the session and once shown in the view it will be deleted, this will be possible with the <code><b>connect-flash</b></code> library, so we use it through <code><b>app.use</b></code>.',
+          step3: 'A store is defined to be used in the session middleware',
+          step4: 'We define the session midleware with our store that will save session data in our database',
+          step5: 'A csrf protection middleware is defined',
+          step6: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
+        },
+        controller: {
+          step1: 'Render the template by panning the attributes',
+          step2: 'Highlight the use of flash in the request in case we come from a post with errors'
+        },
+        view: {
+          step1: 'We check if we have errors to show them',
+          step2: 'For each of the fields we will look to see if it contains validation errors to know if the CSS class <code><b>invalid</b></code> should be added',
+          step3: 'It will also be checked if each field had something written in a previous render',
+          step4: 'The form will have a hidden input with the csrfToken to protect against CSRF attacks'
+        }
       }
     }
   }

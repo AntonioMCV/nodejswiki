@@ -1,0 +1,38 @@
+  <!-- To add compatibility all % simbols are be changed to # -->
+
+  <# if(errorMessage.length) { #>
+    <div class="alert alert-danger"><#= errorMessage #></div>
+  <# } #>
+  <form
+    class="login-form"
+    action="/<#= global.lang.current #>/examples/store/auth/login"
+    method="POST"
+  >
+    <div class="form-control">
+        <label for="email">E-Mail</label>
+        <input
+            class="<#= validationErrors.find(e => e.path === 'email') ? 'invalid' : '' #>"
+            type="text"
+            name="email"
+            id="email"
+            value="<#= oldInput.email #>"
+        >
+    </div>
+    <div class="form-control">
+        <label for="password">Password</label>
+        <input
+            class="<#= validationErrors.find(e => e.path === 'password') ? 'invalid' : '' #>"
+            type="password"
+            name="password"
+            id="password"
+            value="<#= oldInput.password #>"
+        >
+    </div>
+    <input type="hidden" name="_csrf" value="<#= csrfToken #>" />
+    <button class="btn btn-success" type="submit">
+        Login
+    </button>
+  </form>
+  <div class="centered">
+    <a href="/<#= global.lang.current #>/examples/store/auth/reset">Reset Password</a>
+  </div>

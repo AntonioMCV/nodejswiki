@@ -202,6 +202,48 @@ var translations = {
           step3: 'Un formulario con el botón order',
           step4: 'Todos los formularios llevarán un input oculto con el csrfToken para tener protección contra ataques CSRF'
         }
+      },
+      login: {
+        infoBox: 'Se muestra la página de login.',
+        app: {
+          step1: 'En esta vista se harán validaciones de formulario gracias a la libreria <code><b>express-validator</b></code> en el archivo de rutas y será allí donde hagamos las validaciones por cada tipo de campo.',
+          step2: 'Cuando el campo sea incorrecto se guardará un mensaje de error en la sesión y una vez mostrado en la vista este se borrará, esto será posible con la librería <code><b>connect-flash</b></code>, así pues la usamos por medio de <code><b>app.use</b></code>.',
+          step3: 'Se define una store para usarla en el middleware de la sesión',
+          step4: 'Definimos el midleware de sesión con nuestra store que nos guardara datos de sesión en nuestra base de datos',
+          step5: 'Se define un middleware de protección csrf',
+          step6: 'Se define un middleware donde se guardarán en variables locales la autentificación y el csrfToken'
+        },
+        controller: {
+          step1: 'Renderizamos la plantilla pansandole los atributos',
+          step2: 'Destacar el uso de flash en la request por si venimos de un post con errores'
+        },
+        view: {
+          step1: 'Se comprueba si tenemos errores para mostrarlos',
+          step2: 'Por cada uno de los campos buscaremos si contiene errores de validacion para saber si se debe añadir la clase de CSS <code><b>invalid</b></code>',
+          step3: 'También se comprobará si en cada campo tenia algo escrito en un anterior renderizado',
+          step4: 'El formulario llevará un input oculto con el csrfToken para tener protección contra ataques CSRF'
+        }
+      },
+      signup: {
+        infoBox: 'Se muestra la página de signup.',
+        app: {
+          step1: 'En esta vista se harán validaciones de formulario gracias a la libreria <code><b>express-validator</b></code> en el archivo de rutas y será allí donde hagamos las validaciones por cada tipo de campo.',
+          step2: 'Cuando el campo sea incorrecto se guardará un mensaje de error en la sesión y una vez mostrado en la vista este se borrará, esto será posible con la librería <code><b>connect-flash</b></code>, así pues la usamos por medio de <code><b>app.use</b></code>.',
+          step3: 'Se define una store para usarla en el middleware de la sesión',
+          step4: 'Definimos el midleware de sesión con nuestra store que nos guardara datos de sesión en nuestra base de datos',
+          step5: 'Se define un middleware de protección csrf',
+          step6: 'Se define un middleware donde se guardarán en variables locales la autentificación y el csrfToken'
+        },
+        controller: {
+          step1: 'Renderizamos la plantilla pansandole los atributos',
+          step2: 'Destacar el uso de flash en la request por si venimos de un post con errores'
+        },
+        view: {
+          step1: 'Se comprueba si tenemos errores para mostrarlos',
+          step2: 'Por cada uno de los campos buscaremos si contiene errores de validacion para saber si se debe añadir la clase de CSS <code><b>invalid</b></code>',
+          step3: 'También se comprobará si en cada campo tenia algo escrito en un anterior renderizado',
+          step4: 'El formulario llevará un input oculto con el csrfToken para tener protección contra ataques CSRF'
+        }
       }
     }
   }
