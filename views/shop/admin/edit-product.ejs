@@ -8,13 +8,43 @@
    <%- include('../includes/navigation.ejs') %>
 
     <main class="container">
+        <%- include('../includes/documentation/infobox.ejs', {
+            app: {
+                path: 'app.js',
+                imports: 'Mongoose, express-session, connect-mongodb-session, csurf',
+                method: null,
+                steps: translates.app,
+                code: include('../includes/documentation/codes/app-session-csrftoken.ejs')
+            },
+            model: {
+                path: 'models/product.js',
+                imports: 'Mongoose',
+                method: null,
+                steps: translates.model,
+                code: include('../includes/documentation/codes/models/product.ejs')
+            },
+            controller: {
+                path: 'controllers/admin.js',
+                imports: 'Product model',
+                method: 'getAddProduct(), getEditProduct()',
+                steps: translates.controller,
+                code: include('../includes/documentation/codes/controllers/shop-addProduct-editProduct.ejs')
+            },
+            view: {
+                path: 'views/shop/admin/products.ejs',
+                imports: null,
+                method: null,
+                steps: translates.view,
+                code: include('../includes/documentation/codes/views/admin/edit-product.ejs')
+            }
+        }) %>
         <% if(errorMessage.length) { %>
             <div class="alert alert-danger"><%= errorMessage %></div>
         <% } %>
         <!-- To handle image in forms use enctype="multipart/form-data" and the package multer -->
         <form
             class="product-form"
-            action="/<%= global.lang.current %>/examples/store/admin/<% if (editing || hasError) {%>edit-product<% } else { %>add-product<% } %>"
+            action="/<%= global.lang.current %>/examples/store/admin/<% if (editing) {%>edit-product<% } else { %>add-product<% } %>"
             method="POST"
             enctype="multipart/form-data"
         >
@@ -68,11 +98,11 @@
                 </textarea>
             </div>
             <% if (editing || hasError) { %>
-                <input type="hidden" name="productId" value="<% if (editing || hasError) { %><%= product._id %><% } %>">
+                <input type="hidden" name="productId" value="<% if (editing) { %><%= product._id %><% } %>">
             <% } %>
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
             <button class="btn btn-success" type="submit">
-                <% if (editing || hasError) { %>
+                <% if (editing) { %>
                     Update Product
                 <% } else { %>
                     Add Product

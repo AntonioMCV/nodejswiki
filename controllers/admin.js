@@ -9,7 +9,8 @@ exports.getAddProduct = (req, res, next) => {
     editing: false,
     hasError: false,
     errorMessage: [],
-    validationErrors: []
+    validationErrors: [],
+    translates: global.lang.examples.store.addOrEditProducts
   })
 }
 
@@ -31,7 +32,8 @@ exports.postAddProduct = (req, res, next) => {
         description: description
       },
       errorMessage: 'Attached file is not an image',
-      validationErrors: []
+      validationErrors: [],
+      translates: global.lang.examples.store.addOrEditProducts
     })
   }
   const errors = validationResult(req)
@@ -48,7 +50,8 @@ exports.postAddProduct = (req, res, next) => {
         description: description
       },
       errorMessage: errors.array()[0].msg,
-      validationErrors: errors.array()
+      validationErrors: errors.array(),
+      translates: global.lang.examples.store.addOrEditProducts
     })
   }
 
@@ -93,7 +96,8 @@ exports.getEditProduct = (req, res, next) => {
         product: product,
         hasError: false,
         errorMessage: [],
-        validationErrors: []
+        validationErrors: [],
+        translates: global.lang.examples.store.addOrEditProducts
       })
     })
     .catch(err => {
@@ -125,7 +129,8 @@ exports.postEditProduct = (req, res, next) => {
         _id: prodId
       },
       errorMessage: errors.array()[0].msg,
-      validationErrors: errors.array()
+      validationErrors: errors.array(),
+      translates: global.lang.examples.store.addOrEditProducts
     })
   }
 

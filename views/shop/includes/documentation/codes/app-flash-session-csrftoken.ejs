@@ -1,0 +1,29 @@
+  const mongoose = require('mongoose')                              // To connect to our MongoDB database and simplify the interaction
+  const session = require('express-session')                        // To store and retrieve data in our session
+  const MongoDBStore = require('connect-mongodb-session')(session)  // To store and retrieve data in our session from MongoDB database
+  const csrf = require('csurf')                                     // To generate tokens to protect against CSRF attacks
+  const flash = require('connect-flash')                            // To write in session and remove it once we have read it
+
+  // Store to use for our session
+  const store = new MongoDBStore({
+    uri: MONGODB_URI,
+    collection: 'sessions'
+  })
+
+  // To the Session used to login or shop cart example
+  app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    store: store
+  }))
+
+  app.use(csrfProtection) // To generate tokens to protect against CSRF attacks in all views
+  app.use(flash())        // To write in session and remove it once we have read it in all views
+
+  // To save and share the csrfToken and if the user is logged in all views
+  app.use((req, res, next) => {
+    res.locals.isAuthenticated = req.session.isLoggedIn
+    res.locals.csrfToken = req.csrfToken()
+    next()
+  })

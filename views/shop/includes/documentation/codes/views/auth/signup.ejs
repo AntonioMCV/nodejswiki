@@ -1,0 +1,46 @@
+  <!-- To add compatibility all % simbols are be changed to # -->
+
+  <# if(errorMessage.length) { #>
+    <div class="alert alert-danger"><#= errorMessage #></div>
+  <# } #>
+  <form
+    class="login-form"
+    action="/<#= global.lang.current #>/examples/store/auth/signup"
+    method="POST"
+    novalidate
+  >
+    <div class="form-control">
+        <label for="email">E-Mail</label>
+        <input
+            class="<#= validationErrors.find(e => e.path === 'email') ? 'invalid' : '' #>"
+            type="text"
+            name="email"
+            id="email"
+            value="<#= oldInput.email #>"
+        >
+    </div>
+    <div class="form-control">
+        <label for="password">Password</label>
+        <input
+            class="<#= validationErrors.find(e => e.path === 'password') ? 'invalid' : '' #>"
+            type="password"
+            name="password"
+            id="password"
+            value="<#= oldInput.password #>"
+        >
+    </div>
+    <div class="form-control">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+            class="<#= validationErrors.find(e => e.path === 'confirmPassword') ? 'invalid' : '' #>"
+            type="password"
+            name="confirmPassword"
+            id="confirmPassword"
+            value="<#= oldInput.confirmPassword #>"
+        >
+    </div>
+    <input type="hidden" name="_csrf" value="<#= csrfToken #>" />
+    <button class="btn btn-success" type="submit">
+        Signup
+    </button>
+  </form>

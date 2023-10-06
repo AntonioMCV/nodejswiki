@@ -1,0 +1,14 @@
+  exports.getSignup = (req, res, next) => {
+    res.render('shop/auth/signup', {
+      pageTitle: 'Signup',
+      path: '/signup',
+      errorMessage: req.flash('error'),
+      oldInput: {
+        email: '',
+        password: '',
+        confirmPassword: ''
+      },
+      validationErrors: [],
+      translates: global.lang.examples.store.signup
+    })
+  }

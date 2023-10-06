@@ -203,6 +203,102 @@ var translations = {
           step3: 'A form with the order button',
           step4: 'All forms will have a hidden input with the csrfToken to have protection against CSRF attacks'
         }
+      },
+      login: {
+        infoBox: 'The login page is displayed.',
+        app: {
+          step1: 'In this view form validations will be made thanks to the <code><b>express-validator</b></code> library in the routes file and it will be there where we do the validations for each type of field. ',
+          step2: 'When the field is incorrect, an error message will be saved in the session and once shown in the view it will be deleted, this will be possible with the <code><b>connect-flash</b></code> library, so we use it through <code><b>app.use</b></code>.',
+          step3: 'A store is defined to be used in the session middleware',
+          step4: 'We define the session midleware with our store that will save session data in our database',
+          step5: 'A csrf protection middleware is defined',
+          step6: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
+        },
+        controller: {
+          step1: 'Render the template by panning the attributes',
+          step2: 'Highlight the use of flash in the request in case we come from a post with errors'
+        },
+        view: {
+          step1: 'We check if we have errors to show them',
+          step2: 'For each of the fields we will look to see if it contains validation errors to know if the CSS class <code><b>invalid</b></code> should be added',
+          step3: 'It will also be checked if each field had something written in a previous render',
+          step4: 'The form will have a hidden input with the csrfToken to protect against CSRF attacks'
+        }
+      },
+      signup: {
+        infoBox: 'The signup page is displayed.',
+        app: {
+          step1: 'In this view form validations will be made thanks to the <code><b>express-validator</b></code> library in the routes file and it will be there where we do the validations for each type of field. ',
+          step2: 'When the field is incorrect, an error message will be saved in the session and once shown in the view it will be deleted, this will be possible with the <code><b>connect-flash</b></code> library, so we use it through <code><b>app.use</b></code>.',
+          step3: 'A store is defined to be used in the session middleware',
+          step4: 'We define the session midleware with our store that will save session data in our database',
+          step5: 'A csrf protection middleware is defined',
+          step6: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
+        },
+        controller: {
+          step1: 'Render the template by panning the attributes',
+          step2: 'Highlight the use of flash in the request in case we come from a post with errors'
+        },
+        view: {
+          step1: 'We check if we have errors to show them',
+          step2: 'For each of the fields we will look to see if it contains validation errors to know if the CSS class <code><b>invalid</b></code> should be added',
+          step3: 'It will also be checked if each field had something written in a previous render',
+          step4: 'The form will have a hidden input with the csrfToken to protect against CSRF attacks'
+        }
+      },
+      addOrEditProducts: {
+        infoBox: 'This view shows the form to add a product or edit it.',
+        app: {
+          step1: 'In this view form validations will be made thanks to the <code><b>express-validator</b></code> library in the routes file and it will be there where we do the validations for each type of field. ',
+          step2: 'When the field is incorrect, an error message will be saved in the session and once shown in the view it will be deleted, this will be possible with the <code><b>connect-flash</b></code> library, so we use it through <code><b>app.use</b></code>.',
+          step3: 'In the routes file it is checked if the user is logged in to render the view, this is done through the isAuth middleware, pressing one of the buttons will send a form and these always have to be protected from CSRF attacks, with which we must add certain middlewares in our app file',
+          step4: 'A store is defined to be used in the session middleware',
+          step5: 'We define the session midleware with our store that will save session data in our database',
+          step6: 'A csrf protection middleware is defined',
+          step7: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
+        },
+        model: {
+          step1: 'Product Mongoose schema is defined',
+          step2: 'Save as a Mongoose model'
+        },
+        controller: {
+          step1: 'The Product model is imported for the <code><b>getEditProduct</b></code> method.',
+          step2: 'We define the getAddProduct method and render by passing the properties',
+          step3: 'Among them we will set the editing property to false to differentiate it from editing',
+          step4: 'As we are not in editing mode it will not have errors so the hasError will be false and both the errorMessage and the validationErrors will be empty.',
+          step5: 'We define the getEditProduct method',
+          step6: 'We collect the id of the product that we want to edit with the parameters of the request <code><b>req.params.productId</b></code>',
+          step8: 'Thanks to the import of the Product model it will be able to use Mongoose and its <code><b>find()</b></code> method',
+          step9: 'If it does not find the product id it will redirect us to the product list view and we will not continue with the code.',
+          step10: 'We render by passing the properties',
+          step11: 'Among them we will set the editing property to true to differentiate it from adding a new product',
+          step12: 'As we are in editing mode for the first time there will be no errors so the hasError will be false and both the errorMessage and the validationErrors will be empty.'
+        },
+        view: {
+          step1: 'We check if we have errors to show them',
+          step2: 'It checks if we are in editing mode to change the form post to edit-product, otherwise it will be add-product',
+          step3: 'For each of the fields we will look to see if it contains validation errors to know if the <code><b>invalid</b></code> CSS class should be added',
+          step4: 'It will also be checked if each field had something written in a previous render',
+          step5: 'We check if we are in editing mode to obtain the id of the product to edit in an empty field',
+          step6: 'The form will have a hidden input with the csrfToken to protect against CSRF attacks'
+        }
+      },
+      orders: {
+        infoBox: 'The orders that have been added to the user are displayed.',
+        model: {
+          step1: 'The Mongoose schema of the order is defined',
+          step2: 'Save as a Mongoose model'
+        },
+        controller: {
+          step1: 'Thanks to the import of the Order model it will be able to use Mongoose and its <code><b>find()</b></code> method',
+          step2: 'We make the call with Moongose to the database so that it returns the orders that have a <code><b>userId</b></code> that matches the <code><b>req.user </b></code> where we have saved the user session id (This is done from the <code><b>app.js</b></code> middleware so that it is available in all views). To do this we make the call by passing it an object with the filter <code><b>Order.find({userId: req.user})</b></code>',
+          step3: 'We render the template by passing the acquired commands'
+        },
+        view: {
+          step1: 'All orders are listed',
+          step2: 'For each one, its id will be collected as a title.',
+          step3: 'A list will be made with all the products it contains, showing the product title and quantity'
+        }
       }
     }
   }
