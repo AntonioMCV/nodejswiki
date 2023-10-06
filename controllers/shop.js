@@ -131,7 +131,8 @@ exports.getOrders = (req, res, next) => {
     res.render('shop/orders', {
       pageTitle: 'Your Orders',
       path: '/orders',
-      orders: orders
+      orders: orders,
+      translates: global.lang.examples.store.orders
     })
   })
   .catch(err => {

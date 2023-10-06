@@ -282,6 +282,23 @@ var translations = {
           step5: 'We check if we are in editing mode to obtain the id of the product to edit in an empty field',
           step6: 'The form will have a hidden input with the csrfToken to protect against CSRF attacks'
         }
+      },
+      orders: {
+        infoBox: 'The orders that have been added to the user are displayed.',
+        model: {
+          step1: 'The Mongoose schema of the order is defined',
+          step2: 'Save as a Mongoose model'
+        },
+        controller: {
+          step1: 'Thanks to the import of the Order model it will be able to use Mongoose and its <code><b>find()</b></code> method',
+          step2: 'We make the call with Moongose to the database so that it returns the orders that have a <code><b>userId</b></code> that matches the <code><b>req.user </b></code> where we have saved the user session id (This is done from the <code><b>app.js</b></code> middleware so that it is available in all views). To do this we make the call by passing it an object with the filter <code><b>Order.find({userId: req.user})</b></code>',
+          step3: 'We render the template by passing the acquired commands'
+        },
+        view: {
+          step1: 'All orders are listed',
+          step2: 'For each one, its id will be collected as a title.',
+          step3: 'A list will be made with all the products it contains, showing the product title and quantity'
+        }
       }
     }
   }

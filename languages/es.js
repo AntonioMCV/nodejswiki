@@ -281,6 +281,23 @@ var translations = {
           step5: 'Comprobamos si estamos en modo edición para obtener el id del producto a editar en un campo vacio',
           step6: 'El formulario llevará un input oculto con el csrfToken para tener protección contra ataques CSRF'
         }
+      },
+      orders: {
+        infoBox: 'Se muestran las ordenes del usuario.',
+        model: {
+          step1: 'Se define el esquema Mongoose de la orden',
+          step2: 'Se guarda como un modelo Mongoose'
+        },
+        controller: {
+          step1: 'Gracias a la importacion del modelo Order este podra hacer uso de Mongoose y su metodo <code><b>find()</b></code>',
+          step2: 'Hacemos la llamada con Moongose a la base de datos para que nos devuelva las ordenes que tengan un <code><b>userId</b></code> que coincidan con el <code><b>req.user</b></code> donde tenemos guardado el id de la sesion del usuario (Esto se hace desde el middleware de <code><b>app.js</b></code> para que este disponible en todas las vistas). Para ello hacemos la llamada pasandole un objeto con el filtro <code><b>Order.find({userId: req.user})</b></code>',
+          step3: 'Renderizamos la plantilla pasandole las ordenes adquiridas'
+        },
+        view: {
+          step1: 'Se listan todas las ordenes',
+          step2: 'De cada una se recogera su id como título.',
+          step3: 'Se hará un listado con todos los productos que contenga mostrando el titulo de producto y la cantidad'
+        }
       }
     }
   }
