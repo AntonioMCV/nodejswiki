@@ -1,0 +1,42 @@
+  const Product = require('../models/product')
+
+  exports.getAddProduct = (req, res, next) => {
+    res.render('shop/admin/edit-product', {
+      pageTitle: 'Add Product',
+      path: '/admin/add-product',
+      editing: false,
+      hasError: false,
+      errorMessage: [],
+      validationErrors: [],
+      translates: global.lang.examples.store.addOrEditProducts
+    })
+  }
+
+  exports.getEditProduct = (req, res, next) => {
+    const editMode = req.query.edit
+    if (!editMode) {
+      return res.redirect('/' + global.lang.current + '/examples/store')
+    }
+    const prodId = req.params.productId
+    Product.findById(prodId)
+      .then(product => {
+        if (!product) {
+          return res.redirect('/' + global.lang.current + '/examples/store')
+        }
+        res.render('shop/admin/edit-product', {
+          pageTitle: 'Edit Product',
+          path: '/admin/edit-product',
+          editing: editMode,
+          product: product,
+          hasError: false,
+          errorMessage: [],
+          validationErrors: [],
+          translates: global.lang.examples.store.addOrEditProducts
+        })
+      })
+      .catch(err => {
+        const error = new Error(err)
+        error.httpStatusCode = 500
+        return next(error)
+      })
+  }

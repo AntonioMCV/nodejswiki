@@ -244,6 +244,43 @@ var translations = {
           step3: 'También se comprobará si en cada campo tenia algo escrito en un anterior renderizado',
           step4: 'El formulario llevará un input oculto con el csrfToken para tener protección contra ataques CSRF'
         }
+      },
+      addOrEditProducts: {
+        infoBox: 'En esta vista se muestra el formulario para añadir un producto o editarlo.',
+        app: {
+          step1: 'En esta vista se harán validaciones de formulario gracias a la libreria <code><b>express-validator</b></code> en el archivo de rutas y será allí donde hagamos las validaciones por cada tipo de campo.',
+          step2: 'Cuando el campo sea incorrecto se guardará un mensaje de error en la sesión y una vez mostrado en la vista este se borrará, esto será posible con la librería <code><b>connect-flash</b></code>, así pues la usamos por medio de <code><b>app.use</b></code>.',
+          step3: 'En el archivo de rutas se comprueba si el usuario esta logeado para renderizar la vista, esto se hace por medio del middleware isAuth, al pulsar uno de los botones se enviará un formulario y estos siempre tienen que estar protegidos de ataques CSRF, con lo cual hay que añadir ciertos middlewares en nuestro archivo app',
+          step4: 'Se define una store para usarla en el middleware de la sesión',
+          step5: 'Definimos el midleware de sesión con nuestra store que nos guardara datos de sesión en nuestra base de datos',
+          step6: 'Se define un middleware de protección csrf',
+          step7: 'Se define un middleware donde se guardarán en variables locales la autentificación y el csrfToken'
+        },
+        model: {
+          step1: 'Se define el esquema Mongoose del producto',
+          step2: 'Se guarda como un modelo Mongoose'
+        },
+        controller: {
+          step1: 'Se hace la importacion del modelo Product para el metodo <code><b>getEditProduct</b></code>.',
+          step2: 'Definimos el metodo getAddProduct y hacemos un render pasando las propiedades',
+          step3: 'Entre ellas pasaremos la propiedad editing a false para diferenciarla de la edición',
+          step4: 'Como no estamos en el modo edicion no tendra errores con lo cual el hasError será false y tanto el errorMessage y el validationErrors estarán vacios.',
+          step5: 'Definimos el metodo getEditProduct',
+          step6: 'Recogemos el id del producto que queremos editar con los parametros de la request <code><b>req.params.productId</b></code>',
+          step8: 'Gracias a la importacion del modelo Product este podra hacer uso de Mongoose y su metodo <code><b>find()</b></code>',
+          step9: 'Si no encuentra el id del producto nos redirecionará a la vista de listado de productos y no continuaremos con el código.',
+          step10: 'Hacemos un render pasando las propiedades',
+          step11: 'Entre ellas pasaremos la propiedad editing a true para diferenciarla de la de añadir un producto nuevo',
+          step12: 'Como estamos en el modo edición por primera vez no tendrá errores con lo cual el hasError será false y tanto el errorMessage y el validationErrors estarán vacios.'
+        },
+        view: {
+          step1: 'Se comprueba si tenemos errores para mostrarlos',
+          step2: 'Se comprueba si estamos en modo edicion para cambiar el post del formulario a edit-product en caso contrario será add-product',
+          step3: 'Por cada uno de los campos buscaremos si contiene errores de validacion para saber si se debe añadir la clase de CSS <code><b>invalid</b></code>',
+          step4: 'También se comprobará si en cada campo tenia algo escrito en un anterior renderizado',
+          step5: 'Comprobamos si estamos en modo edición para obtener el id del producto a editar en un campo vacio',
+          step6: 'El formulario llevará un input oculto con el csrfToken para tener protección contra ataques CSRF'
+        }
       }
     }
   }
