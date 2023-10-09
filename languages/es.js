@@ -213,12 +213,10 @@ var translations = {
           step5: 'Se define un middleware donde se guardarán en variables locales la autentificación y el csrfToken'
         },
         routes: {
-          step1: 'En las rutas siempre importamos el paquete <code><b>express</b></code> para poder hacer uso de rutas',
-          step2: 'Importamos el paquete <code><b>express-validator</b></code> para comprobar campos de formulario',
-          step3: 'Guardamos el <code><b>Router()</b></code> de express en la variable <code><b>router</b></code> por comodidad',
-          step4: 'Definimos la ruta para el <code><b>GET</b></code> del login con <code><b>router.get("/login", authController.getLogin)</b></code>',
-          step5: 'Definimos la ruta para el <code><b>POST</b></code> del login con <code><b>router.post("/login", [...], authController.postLogin)</b></code>',
-          step6: 'La diferencia es que en el <code><b>POST</b></code> de login se comprueba mediante un middleware usando el <code><b>body</b></code> del <code><b>express-validator</b></code> si los campos cumplen con una serie de normas para finalmente llamar al <code><b>authController.postLogin</b></code>'
+          step1: 'Guardamos el <code><b>Router()</b></code> de express en la variable <code><b>router</b></code> por comodidad',
+          step2: 'Definimos la ruta para el <code><b>GET</b></code> del login con <code><b>router.get("/login", authController.getLogin)</b></code>',
+          step3: 'Definimos la ruta para el <code><b>POST</b></code> del login con <code><b>router.post("/login", [...], authController.postLogin)</b></code>',
+          step4: 'La diferencia es que en el <code><b>POST</b></code> de login se comprueba mediante un middleware usando el <code><b>body</b></code> del <code><b>express-validator</b></code> si los campos cumplen con una serie de normas para finalmente llamar al <code><b>authController.postLogin</b></code>'
         },
         controller: {
           step1: 'Para el <code><b>getLogin</b></code> Renderizamos la plantilla pansandole los atributos',

@@ -214,12 +214,10 @@ var translations = {
           step5: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
         },
         routes: {
-          step1: 'In routes we always import the <code><b>express</b></code> package to be able to use routes',
-          step2: 'We import the <code><b>express-validator</b></code> package to check form fields',
-          step3: 'We save express´s <code><b>Router()</b></code> in the <code><b>router</b></code> variable for convenience',
-          step4: 'We define the route for the <code><b>GET</b></code> of the login with <code><b>router.get("/login", authController.getLogin)</b></code>',
-          step5: 'We define the route for the <code><b>POST</b></code> of the login with <code><b>router.post("/login", [...], authController.postLogin)</b></code>',
-          step6: 'The difference is that in the <code><b>POST</b></code> of login it is checked by a middleware using the <code><b>body</b></code> of the <code><b>express-validator</b></code> if the fields comply with a series of rules to finally call <code><b>authController.postLogin</b></code>'
+          step1: 'We save express´s <code><b>Router()</b></code> in the <code><b>router</b></code> variable for convenience',
+          step2: 'We define the route for the <code><b>GET</b></code> of the login with <code><b>router.get("/login", authController.getLogin)</b></code>',
+          step3: 'We define the route for the <code><b>POST</b></code> of the login with <code><b>router.post("/login", [...], authController.postLogin)</b></code>',
+          step4: 'The difference is that in the <code><b>POST</b></code> of login it is checked by a middleware using the <code><b>body</b></code> of the <code><b>express-validator</b></code> if the fields comply with a series of rules to finally call <code><b>authController.postLogin</b></code>'
         },
         controller: {
           step1: 'For <code><b>getLogin</b></code> we render the template by panning the attributes',
