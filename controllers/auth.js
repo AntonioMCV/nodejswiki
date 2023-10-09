@@ -63,7 +63,8 @@ exports.postLogin = (req, res, next) => {
         email: email,
         password: password
       },
-      validationErrors: errors.array()
+      validationErrors: errors.array(),
+      translates: global.lang.examples.store.login
     })
   }
 
@@ -78,7 +79,8 @@ exports.postLogin = (req, res, next) => {
             email: email,
             password: password
           },
-          validationErrors: []
+          validationErrors: [],
+          translates: global.lang.examples.store.login
         })
       }
       bcrypt
@@ -101,7 +103,8 @@ exports.postLogin = (req, res, next) => {
               email: email,
               password: password
             },
-            validationErrors: []
+            validationErrors: [],
+            translates: global.lang.examples.store.login
           })
         })
         .catch(err => {

@@ -206,16 +206,27 @@ var translations = {
       login: {
         infoBox: 'Se muestra la página de login.',
         app: {
-          step1: 'En esta vista se harán validaciones de formulario gracias a la libreria <code><b>express-validator</b></code> en el archivo de rutas y será allí donde hagamos las validaciones por cada tipo de campo.',
-          step2: 'Cuando el campo sea incorrecto se guardará un mensaje de error en la sesión y una vez mostrado en la vista este se borrará, esto será posible con la librería <code><b>connect-flash</b></code>, así pues la usamos por medio de <code><b>app.use</b></code>.',
-          step3: 'Se define una store para usarla en el middleware de la sesión',
-          step4: 'Definimos el midleware de sesión con nuestra store que nos guardara datos de sesión en nuestra base de datos',
-          step5: 'Se define un middleware de protección csrf',
-          step6: 'Se define un middleware donde se guardarán en variables locales la autentificación y el csrfToken'
+          step1: 'Cuando el campo sea incorrecto se guardará un mensaje de error en la sesión y una vez mostrado en la vista este se borrará, esto será posible con la librería <code><b>connect-flash</b></code>, así pues la usamos por medio de <code><b>app.use</b></code>.',
+          step2: 'Se define una store para usarla en el middleware de la sesión',
+          step3: 'Definimos el midleware de sesión con nuestra store que nos guardara datos de sesión en nuestra base de datos',
+          step4: 'Se define un middleware de protección csrf',
+          step5: 'Se define un middleware donde se guardarán en variables locales la autentificación y el csrfToken'
+        },
+        routes: {
+          step1: 'En las rutas siempre importamos el paquete <code><b>express</b></code> para poder hacer uso de rutas',
+          step2: 'Importamos el paquete <code><b>express-validator</b></code> para comprobar campos de formulario',
+          step3: 'Guardamos el <code><b>Router()</b></code> de express en la variable <code><b>router</b></code> por comodidad',
+          step4: 'Definimos la ruta para el <code><b>GET</b></code> del login con <code><b>router.get("/login", authController.getLogin)</b></code>',
+          step5: 'Definimos la ruta para el <code><b>POST</b></code> del login con <code><b>router.post("/login", [...], authController.postLogin)</b></code>',
+          step6: 'La diferencia es que en el <code><b>POST</b></code> de login se comprueba mediante un middleware usando el <code><b>body</b></code> del <code><b>express-validator</b></code> si los campos cumplen con una serie de normas para finalmente llamar al <code><b>authController.postLogin</b></code>'
         },
         controller: {
-          step1: 'Renderizamos la plantilla pansandole los atributos',
-          step2: 'Destacar el uso de flash en la request por si venimos de un post con errores'
+          step1: 'Para el <code><b>getLogin</b></code> Renderizamos la plantilla pansandole los atributos',
+          step2: 'Destacar el uso de <code><b>flash</b></code> en la request por si venimos de un post con errores, este mensaje se queda en la sesion y se borra cuando no se utilza',
+          step3: 'Para el <code><b>postLogin</b></code> comprobamos que los campos sean correctos, si no se cumplen se guardarán los errores en la sesión y se redirigirá de nuevo a la vista de login para mostrarlos, le pasaremos como atributos los valores que estan escritos en los campos para que no se pierdan en el nuevo renderizado',
+          step4: 'Si los campos son correctos se comprueba si el usuario existe, si no existe se redirigirá de nuevo a la vista de login con un <code><b>ERROR 422</code></b> y se le pasara como atributos un mensaje de error como que es invalido el email o el password y los valores que estan escritos en los campos para que no se pierdan en el nuevo renderizado',
+          step5: 'Si el usuario existe usaremos el <code><b>bcrypt</b></code> para comprobar si el password es correcto, si no se redirigirá de nuevo a la vista de login con un <code><b>ERROR 422</code></b> y se le pasara como atributos un mensaje de error como que es invalido el email o el password y los valores que estan escritos en los campos para que no se pierdan en el nuevo renderizado',
+          step6: 'Si el password es correcto se guardará en la sesión la variable <code><b>isLoggedIn</b></code> con valor <code><b>true</b></code>, se guardará en la sesión el usuario y se redirigirá a la vista de home de la tienda'
         },
         view: {
           step1: 'Se comprueba si tenemos errores para mostrarlos',
