@@ -9,6 +9,14 @@
     code: app.code
   }) %>
   <%- include('collapse-button.ejs', {
+    buttonText: 'Routes',
+    path: routes.path,
+    imports: routes.imports,
+    method: routes.method,
+    steps: routes.steps,
+    code: routes.code
+  }) %>
+  <%- include('collapse-button.ejs', {
     buttonText: 'Model',
     path: model.path,
     imports: model.imports,
