@@ -241,7 +241,7 @@ exports.getNewPassword = (req, res, next) => {
 }
 
 exports.postNewPassword = (req, res, next) => {
-  const newPassword = req.body.newPassword
+  const newPassword = req.body.password
   const userId = req.body.userId
   const passwordToken = req.body.passwordToken
   let resetUser
