@@ -1,4 +1,5 @@
 const crypto = require('node:crypto')
+require('dotenv').config()
 
 // Package to encrypt passwords
 const bcrypt = require('bcryptjs')
@@ -10,10 +11,9 @@ const sendgridTansport = require('nodemailer-sendgrid-transport')
 const { validationResult } = require('express-validator')
 
 const User = require('../models/user')
-
 const transporter = nodemailer.createTransport(sendgridTansport({
   auth: {
-    api_key: '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'
+    api_key: process.env.SENDGRID_API_KEY
   },
   tls: {
     rejectUnauthorized: false
@@ -120,6 +120,7 @@ exports.postLogin = (req, res, next) => {
 }
 
 exports.postSignup = (req, res, next) => {
+  res.header('Accesss-Control-Allow-Origin', '*')
   const email = req.body.email
   const password = req.body.password
 
@@ -151,10 +152,10 @@ exports.postSignup = (req, res, next) => {
     })
     .then((result) => {
       res.redirect('/' + global.lang.current + '/examples/store/auth/login')
-      // TODO fix 'UNABLE_TO_GET_ISSUER_CERT_LOCALLY' error to send email
+      process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0 // fix 'UNABLE_TO_GET_ISSUER_CERT_LOCALLY' error to send email
       return transporter.sendMail({
         to: email,
-        from: 'shop@nodejswiki.com',
+        from: 'superpeska@gmail.com',
         subject: 'Welcome to Shop Node.js Wiki',
         html: '<h1>Welcome to Shop Node.js Wiki!</h1>'
       })
@@ -200,10 +201,10 @@ exports.postReset = (req, res, next) => {
       })
       .then(result => {
         res.redirect('/' + global.lang.current + '/examples/store/')
-        // TODO fix 'UNABLE_TO_GET_ISSUER_CERT_LOCALLY' error to send email
+        process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0 // fix 'UNABLE_TO_GET_ISSUER_CERT_LOCALLY' error to send email
         return transporter.sendMail({
           to: req.body.email,
-          from: 'shop@nodejswiki.com',
+          from: 'superpeska@gmail.com',
           subject: 'Password Reset',
           html: `
             <p>You request a password reset for your account</p>
