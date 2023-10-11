@@ -2,6 +2,7 @@
 const path = require('node:path') // To use utilities for work with file and directory paths in file systems
 
 // Third party packages
+require('dotenv').config()                                        // To read enviroment variables in .env file
 const express = require('express')                                // To simplifies the proccess involved in handling HTTP requests and responses, routing, and middleware management.
 const bodyParser = require('body-parser')                         // To convert all bodys URL to string with body-parser package
 const mongoose = require('mongoose')                              // To connect to our MongoDB database and simplify the interaction
@@ -15,7 +16,7 @@ const { findAvailablePort } = require('./util/free-port')
 const errorCrontroller = require('./controllers/error')
 const User = require('./models/user')
 
-const MONGODB_URI = 'mongodb+srv://antoniomartinezcv:G3LSmw5jQv4v0a67@cluster0.qza9hqi.mongodb.net/shop'
+const MONGODB_URI = process.env.MONGODB_URI
 
 const app = express()
 

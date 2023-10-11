@@ -207,16 +207,25 @@ var translations = {
       login: {
         infoBox: 'The login page is displayed.',
         app: {
-          step1: 'In this view form validations will be made thanks to the <code><b>express-validator</b></code> library in the routes file and it will be there where we do the validations for each type of field. ',
-          step2: 'When the field is incorrect, an error message will be saved in the session and once shown in the view it will be deleted, this will be possible with the <code><b>connect-flash</b></code> library, so we use it through <code><b>app.use</b></code>.',
-          step3: 'A store is defined to be used in the session middleware',
-          step4: 'We define the session midleware with our store that will save session data in our database',
-          step5: 'A csrf protection middleware is defined',
-          step6: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
+          step1: 'When the field is incorrect, an error message will be saved in the session and once shown in the view it will be deleted, this will be possible with the <code><b>connect-flash</b></code> library, so we use it through <code><b>app.use</b></code>.',
+          step2: 'A store is defined to be used in the session middleware',
+          step3: 'We define the session midleware with our store that will save session data in our database',
+          step4: 'A csrf protection middleware is defined',
+          step5: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
+        },
+        routes: {
+          step1: 'We save express´s <code><b>Router()</b></code> in the <code><b>router</b></code> variable for convenience',
+          step2: 'We define the route for the <code><b>GET</b></code> of the login with <code><b>router.get("/login", authController.getLogin)</b></code>',
+          step3: 'We define the route for the <code><b>POST</b></code> of the login with <code><b>router.post("/login", [...], authController.postLogin)</b></code>',
+          step4: 'The difference is that in the <code><b>POST</b></code> of login it is checked by a middleware using the <code><b>body</b></code> of the <code><b>express-validator</b></code> if the fields comply with a series of rules to finally call <code><b>authController.postLogin</b></code>'
         },
         controller: {
-          step1: 'Render the template by panning the attributes',
-          step2: 'Highlight the use of flash in the request in case we come from a post with errors'
+          step1: 'For <code><b>getLogin</b></code> we render the template by panning the attributes',
+          step2: 'Highlight the use of <code><b>flash</b></code> in the request in case we come from a post with errors, this message remains in the session and is deleted when it is not used',
+          step3: 'For the <code><b>postLogin</b></code> we check that the fields are correct, if they are not correct, the errors will be saved in the session and it will be redirected back to the login view to show them , we will pass as attributes the values that are written in the fields so that they are not lost in the new rendering',
+          step4: 'If the fields are correct, it is checked if the user exists, if it does not exist it will be redirected back to the login view with an <code><b>ERROR 422</code></b> and it will be passed as attributes an error message such as that the email or password is invalid and the values that are written in the fields so that they are not lost in the new rendering',
+          step5: 'If the user exists we will use the <code><b>bcrypt</b></code> to check if the password is correct, otherwise it will be redirected back to the login view with a <code><b >ERROR 422</code></b> and an error message will be passed as attributes such as that the email or password is invalid and the values that are written in the fields so that they are not lost in the new rendering',
+          step6: 'If the password is correct, the variable <code><b>isLoggedIn</b></code> with value <code><b>true</b></code> will be saved in the session, it will be saved in the user´s session and will be redirected to the store´s home view'
         },
         view: {
           step1: 'We check if we have errors to show them',

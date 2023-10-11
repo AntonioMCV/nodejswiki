@@ -10,10 +10,17 @@
     <%- include('../includes/documentation/infobox.ejs', {
         app: {
             path: 'app.js',
-            imports: 'Express-validator (Realmente en el archivo de rutas), connect-flash, Mongoose, express-session, connect-mongodb-session, csurf',
+            imports: 'connect-flash, Mongoose, express-session, connect-mongodb-session, csurf',
             method: null,
             steps: translates.app,
             code: include('../includes/documentation/codes/app-flash-session-csrftoken.ejs')
+        },
+        routes: {
+            path: 'routes/store/auth.js',
+            imports: 'express, express-validator',
+            method: 'get(), post()',
+            steps: translates.routes,
+            code: include('../includes/documentation/codes/routes/auth.ejs')
         },
         model: {
             path: null,
@@ -24,8 +31,8 @@
         },
         controller: {
             path: 'controllers/auth.js',
-            imports: null,
-            method: 'getLogin()',
+            imports: 'bcrypt, express-validator, model User',
+            method: 'getLogin(), postLogin()',
             steps: translates.controller,
             code: include('../includes/documentation/codes/controllers/auth-login.ejs')
         },
