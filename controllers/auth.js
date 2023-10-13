@@ -1,5 +1,4 @@
 const crypto = require('node:crypto')
-require('dotenv').config()
 
 // Package to encrypt passwords
 const bcrypt = require('bcryptjs')
