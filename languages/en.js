@@ -237,16 +237,27 @@ var translations = {
       signup: {
         infoBox: 'The signup page is displayed.',
         app: {
-          step1: 'In this view form validations will be made thanks to the <code><b>express-validator</b></code> library in the routes file and it will be there where we do the validations for each type of field. ',
-          step2: 'When the field is incorrect, an error message will be saved in the session and once shown in the view it will be deleted, this will be possible with the <code><b>connect-flash</b></code> library, so we use it through <code><b>app.use</b></code>.',
-          step3: 'A store is defined to be used in the session middleware',
-          step4: 'We define the session midleware with our store that will save session data in our database',
-          step5: 'A csrf protection middleware is defined',
-          step6: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
+          step1: 'We will use <code><b>dotenv</b></code> so that our Environment Variables are secure in the .env file, for security reasons this file will not be part of the repository',
+          step2: 'In this view form validations will be made thanks to the <code><b>express-validator</b></code> library in the routes file and it will be there where we do the validations for each type of field. ',
+          step3: 'When the field is incorrect, an error message will be saved in the session and once shown in the view it will be deleted, this will be possible with the <code><b>connect-flash</b></code> library, so we use it through <code><b>app.use</b></code>.',
+          step4: 'A store is defined to be used in the session middleware',
+          step5: 'We define the session midleware with our store that will save session data in our database',
+          step6: 'A csrf protection middleware is defined',
+          step7: 'A middleware is defined where the authentication and the csrfToken will be saved in local variables'
+        },
+        routes: {
+          step1: 'We save express´s <code><b>Router()</b></code> in the <code><b>router</b></code> variable for convenience',
+          step2: 'We define the route for the <code><b>GET</b></code> of the signup with <code><b>router.get("/signup", authController.getSignup)</b></code>',
+          step3: 'We define the route for the <code><b>POST</b></code> of the signup with <code><b>router.post("/signup", [...], authController.postSignup)</b></code>',
+          step4: 'The difference is that in the <code><b>POST</b></code> of signup it is checked by a middleware using the <code><b>body</b></code> of the <code><b>express-validator</b></code> if the fields comply with a series of rules to finally call <code><b>authController.postSignup</b></code>'
         },
         controller: {
-          step1: 'Render the template by panning the attributes',
-          step2: 'Highlight the use of flash in the request in case we come from a post with errors'
+          step1: 'we create the transporter variable where we define the necessary configurations for sending mail with nodemailer, among them the most important the api_key',
+          step2: 'we define the getSignup method to render the template by giving it the necessary attributes',
+          step3: 'Highlight the use of flash in the request in case we come from a post with errors to save them in session and delete them when they are not necessary',
+          step4: 'we define the postSignup method to check that the fields are correct, if they are not correct, the errors will be saved in the session and it will be redirected back to the signup view, passing the values in the fields as attributes so that they are not lost ',
+          step5: 'The password is encrypted and the new user is saved in the database',
+          step6: 'When finished, we are redirected to the login page and we will send a welcome email to the email address provided in the form'
         },
         view: {
           step1: 'We check if we have errors to show them',
