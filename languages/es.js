@@ -236,16 +236,27 @@ var translations = {
       signup: {
         infoBox: 'Se muestra la página de signup.',
         app: {
-          step1: 'En esta vista se harán validaciones de formulario gracias a la libreria <code><b>express-validator</b></code> en el archivo de rutas y será allí donde hagamos las validaciones por cada tipo de campo.',
-          step2: 'Cuando el campo sea incorrecto se guardará un mensaje de error en la sesión y una vez mostrado en la vista este se borrará, esto será posible con la librería <code><b>connect-flash</b></code>, así pues la usamos por medio de <code><b>app.use</b></code>.',
-          step3: 'Se define una store para usarla en el middleware de la sesión',
-          step4: 'Definimos el midleware de sesión con nuestra store que nos guardara datos de sesión en nuestra base de datos',
-          step5: 'Se define un middleware de protección csrf',
-          step6: 'Se define un middleware donde se guardarán en variables locales la autentificación y el csrfToken'
+          step1: 'Haremos uso de <code><b>dotenv</b></code> para que nuestras variables de entorno esten seguras en el archivo .env, por motivos de seguridad este archivo no formará parte del repositorio',
+          step2: 'En esta vista se harán validaciones de formulario gracias a la libreria <code><b>express-validator</b></code> en el archivo de rutas y será allí donde hagamos las validaciones por cada tipo de campo.',
+          step3: 'Cuando el campo sea incorrecto se guardará un mensaje de error en la sesión y una vez mostrado en la vista este se borrará, esto será posible con la librería <code><b>connect-flash</b></code>, así pues la usamos por medio de <code><b>app.use</b></code>.',
+          step4: 'Se define una store para usarla en el middleware de la sesión',
+          step5: 'Definimos el midleware de sesión con nuestra store que nos guardara datos de sesión en nuestra base de datos',
+          step6: 'Se define un middleware de protección csrf',
+          step7: 'Se define un middleware donde se guardarán en variables locales la autentificación y el csrfToken'
+        },
+        routes: {
+          step1: 'Guardamos el <code><b>Router()</b></code> de express en la variable <code><b>router</b></code> por comodidad',
+          step2: 'Definimos la ruta para el <code><b>GET</b></code> del signup con <code><b>router.get("/signup", authController.getSignup)</b></code>',
+          step3: 'Definimos la ruta para el <code><b>POST</b></code> del signup con <code><b>router.post("/signup", [...], authController.postSignup)</b></code>',
+          step4: 'La diferencia es que en el <code><b>POST</b></code> de signup se comprueba mediante un middleware usando el <code><b>body</b></code> del <code><b>express-validator</b></code> si los campos cumplen con una serie de normas para finalmente llamar al <code><b>authController.postSignup</b></code>'
         },
         controller: {
-          step1: 'Renderizamos la plantilla pansandole los atributos',
-          step2: 'Destacar el uso de flash en la request por si venimos de un post con errores'
+          step1: 'creamos la variable transporter donde definimos las configuraciones necesarias para el envio de mail con nodemailer, entre ellas la mas importante la api_key',
+          step2: 'definimos el metodo getSignup para renderizar la plantilla pansandole los atributos necesarios',
+          step3: 'Destacar el uso de flash en la request por si venimos de un post con errores para guardarlos en sesion y borrar cuando no sean necesarios',
+          step4: 'definimos el metodo postSignup para comprobar que los campos sean correctos, si no se cumplen se guardarán los errores en la sesión y se redirigirá de nuevo a la vista de signup, pasandole como atributos los valores en los campos para que no se pierdan',
+          step5: 'Se encripta la contraseña y se guarda el nuevo usuario en la base de datos',
+          step6: 'Al terminar nos redirecciona a la página de login y enviaremos un mail de bienvenida a la dirección de correo facilitada en el formulario'
         },
         view: {
           step1: 'Se comprueba si tenemos errores para mostrarlos',
